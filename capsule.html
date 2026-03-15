@@ -1356,7 +1356,28 @@ body.no-scroll { overflow: hidden; }
     .calc-left h2 { font-size: 1.6rem !important; }
     .calc-input-row { flex-direction: column !important; }
     .calc-input-row input { width: 100% !important; }
-    .result-price { font-size: 2.2rem !important; }
+   /* Внутри @media (max-width: 768px) */
+.result-price { 
+    font-size: 2.2rem !important; 
+    margin-bottom: 20px !important; /* Уменьшили отступ до кнопки */
+}
+
+.btn-book-now { 
+    width: 100% !important;        /* Кнопка на всю ширину блока */
+    max-width: 320px !important;  /* Но не шире 320px для эстетики */
+    margin: 0 auto !important;     /* Центрируем */
+    display: inline-block !important;
+    white-space: nowrap !important; /* ЗАПРЕТ ПЕРЕНОСА ТЕКСТА */
+    padding: 18px 20px !important;
+    box-sizing: border-box !important; /* Чтобы падинги не раздували кнопку */
+}
+
+.calc-right {
+    padding: 40px 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* Всегда по центру */
+}
     
     /* Делаем кнопку красивой и широкой на мобилках */
     .btn-calc-trigger { 

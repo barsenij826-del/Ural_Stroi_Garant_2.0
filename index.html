@@ -160,7 +160,7 @@
 
 .mobile-phone {
     margin-top: 20px;
-    color: var(--copper) !important;
+    color: #fff !important;
     font-weight: 800;
     letter-spacing: 1px;
 }
@@ -884,19 +884,24 @@ body.no-scroll { overflow: hidden; }
     margin-bottom: 20px;
 }
 
+/* В основном блоке стилей или в медиа-запросе */
 .client-avatar {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     overflow: hidden;
-    background-color: #2a2a2a; /* Заглушка, пока не загрузится фото */
     border: 2px solid var(--copper);
+    background-color: #2a2a2a;
+    display: block !important; /* Гарантируем видимость контейнера */
+    position: relative;
 }
 
 .client-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+    object-fit: cover !important;
+    opacity: 1 !important; /* Убедимся, что не прозрачные */
 }
 
 .client-info h4 {
@@ -1256,12 +1261,15 @@ section {
         margin-bottom: 1.5rem !important;
     }
 
-    .do-content .btn-framed {
-        padding: 1rem 2rem !important;
-        font-size: 0.8rem !important;
-        width: auto !important; /* Кнопка не на весь экран, а по контенту */
-        align-self: center; /* Центрируем кнопку */
-    }
+    /* Внутри @media (max-width: 768px) */
+.do-content .btn-framed {
+    padding: 1rem 1.5rem !important; /* Уменьшили боковые отступы */
+    font-size: 0.75rem !important;   /* Чуть меньше шрифт */
+    width: auto !important;
+    display: inline-block !important;
+    white-space: nowrap !important;  /* ЗАПРЕТ ПЕРЕНОСА ТЕКСТА */
+    align-self: center;
+}
   /* ДЕЛАЕМ БЛОК "БОЛЬШЕ ОБЪЕКТОВ" БЕСШОВНЫМ */
     .portfolio-cta {
         background: transparent !important;
@@ -2396,7 +2404,7 @@ section.trust-line-premium {
                 <div class="review-header">
                     <div class="client-avatar">
                         <!-- Стильная ЧБ фотография Екатерины -->
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80" alt="Екатерина" style="filter: grayscale(100%);">
+                        <img src="img/otz_1.webp alt="Екатерина" style="filter: grayscale(100%);">
                     </div>
                     <div class="client-info">
                         <h4>Екатерина В.</h4>
@@ -2419,7 +2427,7 @@ section.trust-line-premium {
                 <div class="review-header">
                     <div class="client-avatar">
                         <!-- Строгий портрет Михаила -->
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&h=150&q=80" alt="Михаил" style="filter: grayscale(100%);">
+                        <img src="img/otz_2.webp" alt="Михаил" style="filter: grayscale(100%);">
                     </div>
                     <div class="client-info">
                         <h4>Михаил и Анна</h4>
@@ -2442,7 +2450,7 @@ section.trust-line-premium {
                 <div class="review-header">
                     <div class="client-avatar">
                         <!-- Уверенный портрет Алексея -->
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80" alt="Алексей" style="filter: grayscale(100%);">
+                        <img src="img/otz_3.webp" alt="Алексей" style="filter: grayscale(100%);">
                     </div>
                     <div class="client-info">
                         <h4>Алексей С.</h4>

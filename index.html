@@ -1873,6 +1873,58 @@ section.trust-line-premium {
     .want-same-form { grid-template-columns: 1fr; gap: 1.5rem; }
     .want-same-form .submit-group { grid-column: span 1; }
 }
+      /* СТИЛИ КУКИ */
+.cookie-notice {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(150%); /* Спрятан внизу */
+    width: 90%;
+    max-width: 800px;
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(184, 115, 51, 0.4);
+    padding: 20px 40px;
+    z-index: 10002;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cookie-notice.show {
+    transform: translateX(-50%) translateY(0); /* Появляется */
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.cookie-content p {
+    font-size: 0.85rem;
+    color: #fff;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.cookie-content a {
+    color: var(--copper);
+    text-decoration: underline;
+}
+
+/* Адаптив для мобилок */
+@media (max-width: 768px) {
+    .cookie-notice {
+        padding: 20px;
+        bottom: 20px;
+    }
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+}
     </style>
 </head>
 <body>
@@ -2643,6 +2695,13 @@ section.trust-line-premium {
         <button onclick="closeSuccessModal()" class="btn-framed" style="width: 100%;">Закрыть</button>
     </div>
 </div>
+          <!-- БАННЕР КУКИ -->
+<div id="cookieBanner" class="cookie-notice">
+    <div class="cookie-content">
+        <p>Мы используем файлы cookie, чтобы сделать ваш опыт работы с сайтом лучше. Продолжая просмотр, вы соглашаетесь с нашей <a href="privacy.html">политикой конфиденциальности</a>.</p>
+        <button class="btn-framed" style="padding: 10px 25px; font-size: 0.7rem;" onclick="acceptCookies()">Принять</button>
+    </div>
+</div>
   <script>
     // ========================================================
     // 1. НАСТРОЙКИ И ОБЩИЕ ПЕРЕМЕННЫЕ
@@ -2938,6 +2997,23 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(() => alert("Ошибка сети."));
         });
     }
+    // ЛОГИКА КУКИ
+document.addEventListener("DOMContentLoaded", function() {
+    // Проверяем, принимал ли пользователь куки ранее
+    if (!localStorage.getItem("cookiesAccepted")) {
+        // Показываем с задержкой в 2 секунды для красоты
+        setTimeout(() => {
+            document.getElementById("cookieBanner").classList.add("show");
+        }, 2000);
+    }
+});
+
+function acceptCookies() {
+    // Скрываем баннер
+    document.getElementById("cookieBanner").classList.remove("show");
+    // Запоминаем выбор
+    localStorage.setItem("cookiesAccepted", "true");
+}
 </script>
 </body>
 </html>

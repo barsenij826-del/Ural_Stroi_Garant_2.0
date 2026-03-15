@@ -248,7 +248,12 @@ body.no-scroll { overflow: hidden; }
             color: #444;
             font-size: 0.75rem;
         }
-
+  /* Фикс синих цифр в футере */
+.footer-main a[href^="tel"], 
+.footer-col p,
+.footer-main a {
+    color: inherit !important;
+    text-decoration: none !important;
         @media (max-width: 1024px) {
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
@@ -265,13 +270,6 @@ body.no-scroll { overflow: hidden; }
                 gap: 1.5rem;
                 text-align: center;
             }
-            /* Фикс синих цифр в футере */
-.footer-main a[href^="tel"], 
-.footer-col p,
-.footer-main a {
-    color: inherit !important;
-    text-decoration: none !important;
-}
         }
 
         /* МОДАЛКА */

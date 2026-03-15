@@ -719,6 +719,30 @@ body.no-scroll {
             .fab-wrapper.active .fab-main-trigger { animation: none !important; }
             .footer-grid { grid-template-columns: 1fr !important; padding: 0 15px !important; }
         }
+        .cookie-notice {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(150%);
+    width: 90%;
+    max-width: 800px;
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(184, 115, 51, 0.4);
+    padding: 20px 40px;
+    z-index: 20000; /* Подняли выше всех виджетов */
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cookie-notice.show { transform: translateX(-50%) translateY(0); }
+.cookie-content { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.cookie-content p { font-size: 0.85rem; color: #fff; line-height: 1.4; margin: 0; }
+.cookie-content a { color: var(--copper); text-decoration: underline; }
+
+@media (max-width: 768px) {
+    .cookie-notice { padding: 20px; bottom: 20px; }
+    .cookie-content { flex-direction: column; text-align: center; gap: 15px; }
+}
     </style>
 </head>
 <body>
@@ -969,7 +993,18 @@ body.no-scroll {
         <button onclick="closeSuccessModal()" class="btn-submit" style="width: 100%;">Закрыть</button>
     </div>
 </div>
-
+<!-- БАННЕР КУКИ -->
+<div id="cookieBanner" class="cookie-notice">
+    <div class="cookie-content">
+        <p>
+            Мы используем cookie и метрические системы для корректной работы сайта. 
+            Продолжая использовать ресурс, вы соглашаетесь с 
+            <a href="privacy.html">Политикой конфиденциальности</a> и 
+            <a href="privacy.html">обработкой персональных данных</a>.
+        </p>
+        <button class="btn-framed" style="padding: 10px 25px; font-size: 0.7rem;" onclick="acceptCookies()">Принять</button>
+    </div>
+</div>
     <script>
         const portfolioData = [
             { title: "ЖК «Достоевский»", desc: "Квартира для жизни" },
@@ -1158,6 +1193,18 @@ body.no-scroll {
         const fabMenu = document.getElementById('fabMenu');
         if (fabMenu && !fabMenu.contains(e.target)) fabMenu.classList.remove('active');
     });
+        document.addEventListener("DOMContentLoaded", function() {
+    if (!localStorage.getItem("cookiesAccepted")) {
+        setTimeout(() => {
+            document.getElementById("cookieBanner").classList.add("show");
+        }, 2000);
+    }
+});
+
+function acceptCookies() {
+    document.getElementById("cookieBanner").classList.remove("show");
+    localStorage.setItem("cookiesAccepted", "true");
+}
     </script>
 </body>
 </html>

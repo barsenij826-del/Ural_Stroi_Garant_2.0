@@ -1,0 +1,2500 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Капсульный ремонт | Уралстройгарант</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+ <style>
+       :root {
+            --dark-bg: #0A0A0A;
+            --dark-card: #141414;
+            --copper: #B87333;
+            --orange-brand: #D44D2B;
+            --blue-brand: #0056B3;
+            --text-light: #E0E0E0;
+            --text-muted: #888888;
+          --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { 
+            scroll-behavior: smooth; 
+            overflow-x: hidden; 
+            width: 100%; 
+        }
+
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: #fff; 
+            color: #000; 
+            overflow-x: hidden; 
+            width: 100%;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            padding: 0 2rem; 
+        }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ШАПКА */
+      /* ШАПКА */
+/* --- ОБНОВЛЕННЫЕ СТИЛИ ШАПКИ (КАК В ДИЗАЙНЕ) --- */
+/* --- ОБНОВЛЕННЫЕ СТИЛИ ШАПКИ --- */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #0A0A0A; /* Чистый черный вместо rgba */
+    border-bottom: 1px solid rgba(184, 115, 51, 0.3);
+    height: 90px;
+    display: flex;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-box {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 1.2rem;
+    text-transform: uppercase; text-decoration: none !important;
+    color: #fff !important; /* Белый цвет для черной шапки */
+}
+
+.logo-box span { color: var(--copper); }
+
+.nav-menu {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-menu a {
+    text-decoration: none !important;
+    color: #E0E0E0 !important; /* Светло-серый/белый цвет */
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+.nav-menu a:hover { color: var(--copper); }
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header-contacts {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.contact-icon {
+    text-decoration: none !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.contact-icon:hover { transform: translateY(-2px); }
+.contact-icon svg { width: 22px; height: 22px; fill: #fff; }
+
+/* ГАМБУРГЕР */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+.menu-toggle span { width: 28px; height: 2px; background: var(--copper); transition: 0.3s; }
+
+@media (max-width: 1024px) {
+    .nav-menu { display: none; }
+    .menu-toggle { display: flex; }
+}
+
+/* МОБИЛЬНОЕ МЕНЮ */
+/* ПОЛНОЭКРАННАЯ ПОДЛОЖКА МЕНЮ */
+/* ПОДЛОЖКА МЕНЮ */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    
+    /* ЭФФЕКТ МАТОВОГО СТЕКЛА */
+    background: rgba(10, 10, 10, 0.9); /* Черный на 90%, остальное прозрачно */
+    backdrop-filter: blur(15px);       /* Размытие заднего фона */
+    -webkit-backdrop-filter: blur(15px); /* Поддержка для Safari (iPhone) */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    z-index: 10001;
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* КОГДА МЕНЮ ОТКРЫТО */
+.mobile-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* КРАСИВЫЙ ТЕКСТ */
+.mobile-overlay a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Тот самый стильный отступ */
+    transition: 0.3s;
+}
+
+.mobile-overlay a:active {
+    color: var(--copper); /* Медный цвет при нажатии */
+}
+
+.mobile-phone {
+    margin-top: 20px;
+    color: var(--copper) !important;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+        /* 1. HERO BLOCK */
+        .hero-capsule { padding: 4rem 0 6rem; background: #fff; }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .hero-left-half { display: flex; justify-content: center; width: 100%; }
+        .hero-left-content { max-width: 550px; width: 100%; }
+        .hero-left-content h1 { font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 800; line-height: 1; color: var(--orange-brand); text-transform: uppercase; margin-bottom: 2rem; }
+        .hero-left-content h1 span { color: #000; }
+        .hero-left-content .border-box { border: 2px solid #000; padding: 2rem; font-size: 1.4rem; font-weight: 800; line-height: 1.1; text-transform: uppercase; }
+        .hero-right-half { display: flex; justify-content: center; width: 100%; }
+        .hero-right-content { max-width: 450px; width: 100%; }
+        .hero-right-content .main-desc { font-size: 1.1rem; margin-bottom: 2rem; color: #333; font-weight: 500; }
+        .badge-group { display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .badge-item { background: #f0f5ff; padding: 0.6rem 1rem; border-radius: 8px; display: flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 700; color: #333; }
+        .badge-item svg { width: 16px; color: var(--blue-brand); }
+        .action-btns { display: flex; flex-direction: column; gap: 1rem; }
+        .btn-action { padding: 0.9rem 1.8rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.8rem; display: flex; align-items: center; justify-content: space-between; gap: 20px; border: 1px solid #ddd; color: #000; width: 100%; transition: var(--transition); }
+        .btn-calc { background: var(--orange-brand); color: #fff; border: none; }
+        .icon-circle { width: 28px; height: 28px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .btn-doc .icon-circle { background: var(--orange-brand); color: #fff; }
+
+        /* 2. VIDEO SECTION */
+        .video-section { padding: 6rem 0; background: #fff; }
+        .video-wrapper { position: relative; width: 100%; height: 550px; background: url('img/hero.webp') center/cover no-repeat; border-radius: 30px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: 3rem; color: #fff; }
+        .video-wrapper::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, transparent 50%, rgba(0,0,0,0.3) 100%); z-index: 1; }
+        .video-content-top { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; }
+        .video-title { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.5rem); max-width: 600px; line-height: 1.2; text-transform: uppercase; }
+        .partner-logo { text-align: right; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; }
+        .partner-logo strong { display: block; font-size: 1rem; margin-top: 5px; letter-spacing: 1px; }
+        .video-content-bottom { position: relative; z-index: 2; }
+        .play-btn-group { display: flex; align-items: center; gap: 1.5rem; cursor: pointer; width: fit-content; }
+        .play-circle { width: 80px; height: 80px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .play-circle svg { width: 25px; height: 25px; fill: var(--orange-brand); margin-left: 5px; }
+        .play-text { font-weight: 800; letter-spacing: 2px; font-size: 1.1rem; }
+
+        /* 3. ЧТО ВХОДИТ В СТОИМОСТЬ */
+/* КРАСИВЫЙ ЦЕНТРИРОВАННЫЙ ЗАГОЛОВОК */
+.included-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem); /* Адаптивный размер */
+    margin-bottom: 6rem; /* Отступ до вкладок */
+    text-transform: uppercase;
+    line-height: 1.2;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+.included-title span {
+    color: var(--orange-brand);
+    position: relative;
+    display: inline-block;
+}
+
+
+
+/* Увеличим общий отступ секции, чтобы она "дышала" */
+.included-section {
+    padding: 10rem 0 !important;
+}
+/* ГЛАВНЫЙ КОНТЕЙНЕР ДЛЯ ДВУХ КОЛОНОК */
+.tabs-container { 
+    display: grid; 
+    grid-template-columns: 350px 1fr; /* Слева кнопки 350px, справа — текст */
+    gap: 5rem; 
+    align-items: start; 
+    margin-top: 3rem;
+}
+
+/* Стили для правой колонки с текстом */
+.tab-content {
+    background: #fff;
+}
+
+.work-list {
+    list-style: none;
+    padding: 0;
+}
+
+.work-list li {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #333;
+    border-bottom: 1px solid #f5f5f5;
+    padding-bottom: 10px;
+}
+
+.work-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--orange-brand);
+    font-weight: bold;
+}
+
+/* Адаптив для мобилок */
+@media (max-width: 992px) {
+    .tabs-container { 
+        grid-template-columns: 1fr; 
+        gap: 2rem; 
+    }
+}
+        /* БАЗОВЫЙ СТИЛЬ ВКЛАДКИ */
+.tab-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 1.2rem 2rem;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+.tab-item span {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.tab-item svg {
+    width: 28px;
+    height: 28px;
+    transition: 0.3s;
+}
+
+/* ЦВЕТА ИКОНОК В ПОКОЕ */
+.tab-item[onclick*="floors"] svg { fill: #C41E3A; }
+.tab-item[onclick*="walls"] svg { fill: #D44D2B; }
+.tab-item[onclick*="ceiling"] svg { fill: #0056B3; }
+.tab-item[onclick*="plumbing"] svg { fill: #8DB600; }
+.tab-item[onclick*="electric"] svg { fill: #800080; }
+
+/* ЦВЕТА ПРИ АКТИВАЦИИ (КЛАСС .active) */
+.tab-item.active span { color: #fff; }
+.tab-item.active svg { fill: #fff !important; }
+
+/* Индивидуальные фоны для активных вкладок */
+.tab-item[onclick*="floors"].active { background: #C41E3A; border-color: #C41E3A; }
+.tab-item[onclick*="walls"].active { background: #D44D2B; border-color: #D44D2B; }
+.tab-item[onclick*="ceiling"].active { background: #0056B3; border-color: #0056B3; }
+.tab-item[onclick*="plumbing"].active { background: #8DB600; border-color: #8DB600; }
+.tab-item[onclick*="electric"].active { background: #800080; border-color: #800080; }
+
+/* Эффект тени при наведении */
+.tab-item:hover:not(.active) {
+    background: #f9f9f9;
+    transform: translateX(5px);
+}
+
+
+        /* 4. ТАК МОЖЕТ ВЫГЛЯДЕТЬ ВАША КВАРТИРА */
+    /* СТИЛИ БЛОКА С КАРТИНКАМИ В РАМКАХ */
+/* СТИЛИ БЛОКА С КАРТИНКАМИ В РАМКАХ */
+    /* ОБНОВЛЕННЫЕ СТИЛИ: ЗАКРУГЛЕННЫЕ ФОТО БЕЗ РАМОК */
+        .styles-section { padding: 8rem 0; background: #fff; }
+        .styles-header { text-align: center; margin-bottom: 5rem; }
+        .styles-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase; color: #000; }
+        .styles-header h2 span { color: var(--orange-brand); }
+
+        .styles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; align-items: start; }
+        .style-column h3 { text-align: center; font-size: 1.8rem; font-weight: 700; margin-bottom: 2.5rem; font-family: 'Playfair Display', serif; color: #000; }
+        
+        /* Контейнер фото как в портфолио */
+        .style-img-wrap {
+            width: 100%;
+            aspect-ratio: 16/11;
+            border-radius: 25px; /* Закругление как в примерах работ */
+            overflow: hidden;
+            background-color: #f5f5f5;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            line-height: 0;
+        }
+        
+        .style-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Эффект увеличения при наведении */
+        .style-img-wrap:hover img {
+            transform: scale(1.08);
+        }
+
+        .style-img-wrap:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .hidden-gallery { display: none; flex-direction: column; width: 100%; }
+        .styles-footer { text-align: center; margin-top: 4rem; }
+/* СТИЛЬ КНОПКИ "ПОСМОТРЕТЬ ЕЩЕ" */
+        .styles-footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding-bottom: 2rem;
+        }
+
+        .btn-expand-all {
+            display: inline-block;
+            background-color: var(--blue-brand); /* Тот самый синий цвет */
+            color: #fff;
+            border: none;
+            padding: 1.2rem 4rem;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(0, 86, 179, 0.3);
+            outline: none;
+        }
+
+        .btn-expand-all:hover {
+            background-color: #004494;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 86, 179, 0.5);
+        }
+
+        .btn-expand-all:active {
+            transform: translateY(-2px);
+        }
+   /* Мобильные кнопки стилей (на ПК скрыты) */
+        .mobile-expand-wrapper {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .btn-expand-column {
+            display: inline-block;
+            background-color: var(--blue-brand);
+            color: #fff;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(0, 86, 179, 0.3);
+            outline: none;
+        }
+
+        .btn-expand-column:hover {
+            background-color: #004494;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 86, 179, 0.5);
+        }
+        /* 5. ЧТО ВЫ ПОЛУЧАЕТЕ */
+/* ИСПРАВЛЕННЫЕ СТИЛИ: 2 КОЛОНКИ И ИКОНКИ СЛЕВА */
+        .benefits-section { padding: 8rem 0; background: #fff; }
+        .benefits-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); text-transform: uppercase; margin-bottom: 5rem; text-align: center; color: #000; }
+        .benefits-title span { color: var(--orange-brand); }
+        
+        .benefits-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; /* СТРОГО 2 КОЛОНКИ */
+            gap: 20px; 
+        }
+
+        .benefit-card {
+            padding: 30px;
+            border-radius: 25px;
+            display: flex; /* Флекс для расположения иконки слева */
+            align-items: flex-start;
+            gap: 25px;
+            color: #fff;
+            transition: var(--transition);
+            min-height: 180px;
+        }
+        
+        .benefit-icon { 
+            width: 60px; 
+            height: 60px; 
+            flex-shrink: 0; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .benefit-icon svg { width: 100%; height: 100%; fill: #fff; }
+        
+        .benefit-info { text-align: left; }
+        .benefit-info h4 { font-size: 1.3rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; line-height: 1.2; }
+        .benefit-info p { font-size: 0.9rem; line-height: 1.4; opacity: 0.9; font-weight: 500; }
+
+        /* Цвета карточек 1-в-1 как на скрине */
+        .c-1 { background-color: #94b8b8; } 
+        .c-2 { background-color: #76b3a3; } 
+        .c-3 { background-color: #d48e4d; } 
+        .c-4 { background-color: #4d6b8e; } 
+        .c-5 { background-color: #d44d2b; } 
+        .c-6 { background-color: #b34d3d; } 
+        .c-7 { background-color: #8e8e8e; } 
+        .c-8 { background-color: #6b8e8e; } 
+        .c-9 { background-color: #4d8e8e; } 
+        .c-10 { background-color: #a33d3d; }
+
+        /* Адаптив для мобилок: в одну колонку */
+        @media (max-width: 768px) {
+            .benefits-grid { grid-template-columns: 1fr; }
+            .benefit-card { padding: 20px; gap: 15px; }
+        }
+
+        /* 6. ТАРИФЫ */
+       /* СТИЛИ БЛОКА ТАРИФЫ */
+.tariffs-section {
+    padding: 8rem 0;
+    background-color: #fff;
+    color: #000;
+}
+
+.tariffs-header-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 60px;
+    padding: 2rem 0;
+    border-bottom: 2px solid #000;
+    align-items: end;
+}
+
+.t-head-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.t-head-title p {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.3;
+}
+
+.t-head-item {
+    text-align: center;
+    padding: 0 10px;
+}
+
+.t-head-item span {
+    display: block;
+    font-size: 0.7rem;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.t-head-item strong {
+    font-size: 1.3rem;
+    font-weight: 800;
+    display: block;
+}
+
+.t-head-item small {
+    display: block;
+    font-size: 0.65rem;
+    color: #999;
+    margin-top: 5px;
+    line-height: 1.2;
+}
+
+/* Строки категорий */
+.tariff-row {
+    border-bottom: 1px solid #eee;
+}
+
+.tariff-row-main {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 60px;
+    padding: 2rem 0;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tariff-row-main:hover {
+    background: #fafafa;
+}
+
+.tariff-row-main h4 {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.t-check {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #000;
+}
+
+.t-plus {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.tariff-row.active .t-plus {
+    transform: rotate(45deg);
+    background: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+/* Выпадающий список работ */
+.tariff-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #fcfcfc;
+}
+
+.tariff-row.active .tariff-content {
+    max-height: 2000px; /* Достаточно для всех пунктов */
+}
+
+.t-detail-item {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 60px;
+    padding: 1.2rem 0;
+    border-bottom: 1px dotted #ddd;
+    font-size: 0.95rem;
+    align-items: center;
+}
+
+.t-detail-item:last-child {
+    border-bottom: none;
+}
+
+.t-detail-name {
+    padding-left: 2rem;
+    color: #444;
+}
+
+/* Итоговая строка */
+.tariffs-footer-line {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 60px;
+    padding: 3rem 0;
+    align-items: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 1024px) {
+    .tariffs-header-grid, .tariff-row-main, .t-detail-item, .tariffs-footer-line {
+        grid-template-columns: 1.2fr 1fr 1fr 1fr 40px;
+    }
+    .t-head-title h2 { font-size: 2rem; }
+    .t-detail-name { padding-left: 0.5rem; font-size: 0.8rem; }
+}
+
+        /* 7. КАЛЬКУЛЯТОР */
+        /* СТИЛИ КАЛЬКУЛЯТОРА */
+.calc-section {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.calc-tabs {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.calc-tab {
+    padding: 12px 30px;
+    border-radius: 50px;
+    border: none;
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.calc-tab.active {
+    background: var(--orange-brand);
+}
+
+.calc-main-box {
+    display: flex;
+    background-color: var(--orange-brand);
+    border-radius: 40px;
+    overflow: hidden;
+    min-height: 350px;
+}
+
+.calc-left {
+    flex: 1.5;
+    padding: 60px;
+    color: #fff;
+}
+
+.calc-left h2 {
+    font-size: 38px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: -1px;
+}
+
+.calc-left p {
+    font-size: 16px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.calc-input-row {
+    display: flex;
+    gap: 15px;
+}
+
+.calc-input-row input {
+    width: 200px;
+    padding: 18px 25px;
+    border-radius: 15px;
+    border: none;
+    font-size: 18px;
+    font-weight: 700;
+    outline: none;
+    color: #000;
+}
+
+.btn-calc-trigger {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 0 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.calc-right {
+    flex: 1;
+    background-color: #000;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+
+.calc-right p {
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.result-price {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--copper);
+    margin-bottom: 30px;
+}
+
+.btn-book-now {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    cursor: pointer;
+    width: fit-content;
+    transition: 0.3s;
+}
+
+.btn-book-now:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+    .calc-main-box { flex-direction: column; }
+    .calc-left, .calc-right { padding: 40px 20px; text-align: center; }
+    .calc-input-row { flex-direction: column; align-items: center; }
+    .calc-input-row input { width: 100%; }
+    .calc-tabs { justify-content: center; }
+}
+        /* 8. ПОРТФОЛИО */
+      /* СТИЛИ БЛОКА ПОРТФОЛИО (СВЕТЛЫЙ ВАРИАНТ) */
+.portfolio-section-white {
+    background-color: #ffffff;
+    padding: 100px 0;
+    color: #000;
+}
+
+.portfolio-title-dark {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 60px;
+    color: #000;
+    text-transform: uppercase;
+}
+
+.portfolio-title-dark span {
+    color: var(--orange-brand);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px 30px;
+}
+
+.portfolio-item {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.portfolio-img-wrap {
+    width: 100%;
+    aspect-ratio: 16/10;
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+}
+
+.portfolio-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.portfolio-info h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.portfolio-footer {
+    text-align: center;
+    margin-top: 70px;
+}
+
+/* Синяя кнопка */
+.btn-portfolio-blue {
+    display: inline-block;
+    background-color: var(--blue-brand);
+    color: #fff;
+    padding: 18px 45px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.btn-portfolio-blue:hover {
+    background-color: #004494;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 86, 179, 0.2);
+}
+
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+        /* 9. ХОТИТЕ ТАКЖЕ? */
+     /* --- БЛОК: ХОТИТЕ ТАКЖЕ? (ОРАНЖЕВЫЙ) --- */
+        .want-same-section {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+        .want-same-box {
+            background-color: var(--orange-brand);
+            border-radius: 40px;
+            padding: 50px 60px;
+            color: #fff;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .want-same-text h2 { font-size: 42px; font-weight: 800; margin-bottom: 10px; }
+        .want-same-text p { font-size: 16px; opacity: 0.9; line-height: 1.3; }
+
+        .want-same-form { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+        .want-same-form input[type="text"], 
+        .want-same-form input[type="tel"] { 
+            padding: 18px 25px; 
+            border-radius: 15px; 
+            border: none; 
+            flex: 1; 
+            min-width: 200px;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        
+        .contact-choice { display: flex; flex-direction: column; gap: 8px; font-size: 13px; min-width: 140px; }
+        .contact-choice label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600; }
+        .contact-choice input { accent-color: #000; }
+
+        .btn-submit-black {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 20px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+        .btn-submit-black:hover { transform: scale(1.05); background: #1a1a1a; }
+
+       /* --- БЛОК: ОСТАЛИСЬ ВОПРОСЫ (DARK PREMIUM VERSION) --- */
+        .questions-premium {
+            background-color: var(--dark-bg);
+            padding: 100px 0;
+            border-top: 1px solid rgba(184, 115, 51, 0.2);
+        }
+
+        .q-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+        }
+
+        /* Левая сторона: Логотип */
+        .q-brand {
+            flex: 1;
+        }
+        .q-brand .logo-box {
+            font-size: 1.5rem;
+        }
+
+        /* Правая сторона: Карточка с кнопками */
+        .q-action-card {
+            flex: 2;
+            background-color: var(--dark-card);
+            border: 1px solid rgba(184, 115, 51, 0.1);
+            border-radius: 30px;
+            padding: 40px 50px;
+            text-align: center;
+        }
+
+        .q-action-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #fff;
+        }
+        .q-action-card h3 span {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .q-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .q-btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        /* Цвета кнопок как на скрине */
+        .q-btn-white { background-color: #fff; color: #0056B3; }
+        .q-btn-tg { background-color: #8EBBFF; color: #0056B3; }
+        .q-btn-wa { background-color: #4CAF50; color: #fff; }
+
+        .q-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .q-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 1024px) {
+            .q-flex { flex-direction: column; text-align: center; }
+            .q-action-card { padding: 30px 20px; width: 100%; }
+            .q-buttons { flex-direction: column; align-items: center; }
+            .q-btn { width: 100%; max-width: 280px; justify-content: center; }
+        }
+/* --- ПРЕМИАЛЬНЫЙ ФУТЕР --- */
+.footer-main {
+    background-color: #050505;
+    padding: 8rem 0 4rem;
+    border-top: 1px solid #1a1a1a;
+    color: #fff;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 4rem;
+    margin-bottom: 6rem;
+}
+.footer-col { display: flex; flex-direction: column; gap: 1.5rem; }
+.footer-label {
+    color: var(--copper);
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 0.7rem;
+    letter-spacing: 3px; /* Раздвигаем буквы для премиального вида */
+    margin-bottom: 1.5rem;
+    display: block;
+}
+.footer-links { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.8rem; }
+.footer-links a {
+    color: var(--text-muted); /* Делаем текст серым, как на первом скрине */
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+.footer-links a:hover {
+    color: var(--copper);
+    padding-left: 5px; /* Легкий эффект при наведении */
+}
+/* Стиль для иконок скачивания (Презентация и Лицензия) */
+.download-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff !important; /* Выделяем белым на фоне остальных ссылок */
+    font-weight: 600;
+    margin-top: 5px;
+}
+.footer-bottom { padding-top: 3rem; border-top: 1px solid #1a1a1a; display: flex; justify-content: space-between; align-items: center; color: #444; font-size: 0.75rem; }
+
+@media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+}
+@media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+}
+/* ВИДЖЕТ СВЯЗИ (СВЕТЛАЯ ТЕМА) */
+.fab-wrapper {
+    position: fixed; bottom: 30px; right: 30px; z-index: 10000;
+    display: flex; flex-direction: column-reverse; align-items: center; gap: 15px;
+}
+
+.fab-main-trigger {
+    width: 65px; height: 65px; background: var(--orange-brand); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 25px rgba(212, 77, 43, 0.3); cursor: pointer;
+    position: relative; transition: 0.4s;
+    animation: fabPulseLight 2s infinite;
+}
+
+.fab-main-trigger svg { position: absolute; width: 28px; fill: #fff; transition: 0.4s; }
+
+.fab-icon-close {
+    position: absolute; font-family: Arial, sans-serif; font-size: 45px; color: #fff; 
+    opacity: 0; transform: scale(0.5); transition: 0.4s;
+    display: flex; align-items: center; justify-content: center; line-height: 0; top: 45%;
+}
+
+/* Анимация иконок */
+@keyframes iconToggle { 0%, 45% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes iconToggleAlt { 0%, 45% { opacity: 0; } 50%, 100% { opacity: 1; } }
+.icon-phone-main { animation: iconToggle 4s infinite; }
+.icon-msg-main { animation: iconToggleAlt 4s infinite; }
+
+/* Пульсация (оранжевая) */
+@keyframes fabPulseLight {
+    0% { box-shadow: 0 0 0 0 rgba(212, 77, 43, 0.5); transform: scale(1); }
+    70% { box-shadow: 0 0 0 15px rgba(212, 77, 43, 0); transform: scale(1.05); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 77, 43, 0); transform: scale(1); }
+}
+
+.fab-wrapper.active .fab-main-trigger { animation: none; background: #333; transform: rotate(90deg); }
+.fab-wrapper.active .icon-phone-main, .fab-wrapper.active .icon-msg-main { opacity: 0 !important; animation: none; }
+.fab-wrapper.active .fab-icon-close { opacity: 1; transform: scale(1) rotate(-90deg); }
+
+/* Вылетающие кнопки (белые с оранжевой иконкой) */
+.fab-options {
+    display: flex; flex-direction: column-reverse; gap: 15px;
+    opacity: 0; visibility: hidden; transform: translateY(20px); transition: 0.3s;
+}
+.fab-wrapper.active .fab-options { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.fab-sub {
+    width: 50px; height: 50px; background: #fff; border: 1px solid #eee;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.fab-sub svg { width: 22px; fill: var(--orange-brand); }
+.fab-sub:hover { background: var(--orange-brand); border-color: var(--orange-brand); }
+.fab-sub:hover svg { fill: #fff; }
+
+/* СТИЛИ МОДАЛКИ (СВЕТЛЫЕ) */
+.phone-modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255,255,255,0.8); backdrop-filter: blur(10px);
+    z-index: 10001; display: none; align-items: center; justify-content: center;
+    opacity: 0; transition: 0.4s;
+}
+.phone-modal-overlay.active { display: flex; opacity: 1; }
+.phone-modal-card {
+    background: #fff; border: 1px solid #eee; padding: 50px; border-radius: 30px;
+    text-align: center; position: relative; max-width: 400px; width: 90%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1); transform: translateY(20px); transition: 0.4s;
+}
+.phone-modal-overlay.active .phone-modal-card { transform: translateY(0); }
+.close-modal { position: absolute; top: 20px; right: 25px; font-size: 30px; color: #ccc; cursor: pointer; }
+.modal-phone-number { font-size: 1.8rem; font-weight: 800; text-decoration: none; display: block; margin-bottom: 10px; }
+.modal-divider { height: 1px; background: #eee; margin: 20px 0; }
+body.no-scroll { overflow: hidden; }
+
+/* СТИЛИ СВЕТЛОЙ МОДАЛКИ ДЛЯ БРОНИРОВАНИЯ */
+#bookModal .phone-modal-card {
+    background: #fff;
+    border: none;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.modal-form-light input:focus {
+    border-color: var(--orange-brand) !important;
+}
+
+#bookModal .close-modal {
+    color: #ccc;
+}
+/* ==========================================
+   АДАПТИВ СТРАНИЦЫ КАПСУЛА (768px)
+========================================== */
+@media (max-width: 768px) { .container { 
+        padding: 0 20px !important; 
+    }
+
+    
+    /* 1. HERO BLOCK */
+    .hero-capsule { padding: 4rem 0 4rem !important; }
+    .hero-grid { grid-template-columns: 1fr !important; gap: 2.5rem; text-align: center; }
+    .hero-left-content h1 { font-size: 2.2rem !important; margin-bottom: 1.5rem; }
+    /* 1. Сужаем блок с рамкой, чтобы он не касался краев экрана */
+     /* 4. Также правим рамку в Hero, чтобы она стояла по той же линии */
+  .hero-left-content .border-box {
+        margin: 0 15px !important; /* ПАРАМЕТР: 15px — это отступ рамки от краев экрана */
+        width: auto !important;     /* Позволяет маржинам работать */
+        padding: 1.5rem !important;
+        font-size: 1.1rem !important;
+    }
+  /* 2. Убираем серую полоску над блоком с видео */
+    .subtle-divider {
+        display: none !important;
+    }
+    .badge-group { justify-content: center; }
+    /* 5. И кнопки калькулятора тоже вровень */
+   .action-btns {
+        padding: 0 15px !important; /* Отступы для кнопок */
+        margin-top: 3rem !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    /* 2. VIDEO */
+    .video-section { padding: 3rem 0; }
+    .video-wrapper { height: 350px !important; padding: 1.5rem !important; border-radius: 20px; }
+    .video-title { font-size: 1.3rem !important; text-align: left; }
+    .play-circle { width: 60px; height: 60px; }
+
+    /* 3. ЧТО ВХОДИТ (ВКЛАДКИ) */
+    .included-section { padding: 4rem 20px !important; }
+    .included-title { font-size: 1.8rem !important; margin-bottom: 3rem !important; }
+    .tabs-container { grid-template-columns: 1fr !important; gap: 2rem; }
+    
+    /* Делаем иконки вкладок горизонтальным скроллом, чтобы не занимали весь экран */
+   /* Выравниваем иконки вкладок по одной линии с текстом */
+     /* 2. Обнуляем боковые отступы у навигации вкладок (теперь работает отступ контейнера) */
+  /* 2. Навигация вкладок: выравниваем иконку по тексту */
+   /* 2. Навигация вкладок: выравниваем иконку по тексту */
+    .tabs-nav { 
+        display: flex !important; 
+        overflow-x: auto; 
+        gap: 12px; 
+        padding: 0 0 15px 0 !important; /* УБРАЛИ боковые 15px, чтобы кнопки прижались к левому краю */
+        width: 100%;
+        box-sizing: border-box;
+    }
+    /* Убираем лишние маржины у кнопок, чтобы они не ломали выравнивание */
+    .tab-item { 
+        flex: 0 0 auto; 
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    .tab-item span { font-size: 0.85rem !important; }
+
+    /* 4. ГАЛЕРЕЯ СТИЛЕЙ */
+    .styles-section { padding: 4rem 0; }
+    .styles-grid { grid-template-columns: 1fr !important; gap: 0rem; } /* Убрали gap, чтобы колонки шли одна за другой без дыр */
+    .style-column h3 { font-size: 1.6rem !important; margin-bottom: 1.5rem; }
+    .style-img-wrap { border-radius: 15px; }
+    
+    /* Переключаем видимость кнопок */
+    .styles-footer { display: none !important; } /* Прячем общую кнопку */
+    .mobile-expand-wrapper { display: block !important; } /* Показываем кнопки в колонках */
+
+  /* 5. ТАРИФЫ (Мобильная таблица как на скрине) */
+    .tariffs-section { padding: 4rem 0; }
+    
+    .tariffs-header-grid { 
+        display: grid !important; 
+        grid-template-columns: 1fr 45px 45px 45px !important; 
+        gap: 0;
+        padding: 0 0 1rem 0 !important;
+        align-items: end !important;
+        border-bottom: 2px solid #000 !important;
+    }
+    .tariffs-header-grid > div:last-child { display: none !important; }
+    
+    .t-head-title h2 { font-size: 2.2rem !important; margin-bottom: 0.5rem; }
+    .t-head-title p { font-size: 0.7rem !important; line-height: 1.2; padding-right: 15px; color: #666; }
+    
+    /* Вертикальные заголовки */
+    .t-head-item {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        height: 140px;
+        text-align: left; /* Физический верх, который после поворота станет визуальным низом */
+        padding-top: 15px; /* Отодвигаем от черной линии */
+        margin: 0 auto;
+        width: 100%;
+        border-right: 1px solid #f0f0f0; /* После поворота на 180 это будет визуально левая граница */
+    }
+    .tariffs-header-grid > .t-head-item:nth-child(2) { border-right: none; } /* У первого тарифа убираем линию */
+
+    .t-head-item span { 
+        display: block;
+        font-size: 0.8rem; 
+        font-weight: 700; 
+        color: #000; 
+        margin-bottom: 0; 
+        margin-left: 5px; /* Раздвигает две вертикальные строчки */
+        text-transform: none;
+        letter-spacing: 0;
+    }
+    .t-head-item strong { 
+        display: block;
+        font-size: 0.8rem; 
+        font-weight: 500;
+        color: #000;
+        white-space: nowrap;
+    }
+    .t-head-item small { display: none !important; } /* Скрываем описание под ключ для экономии места */
+    
+    /* Основная строка "Полы", "Стены" и т.д. */
+    .tariff-row-main { 
+        grid-template-columns: 1fr 45px !important; 
+        padding: 1.2rem 0 !important; 
+    }
+    .tariff-row-main > div:not(.t-plus) { display: none !important; } /* Прячем пустые колонки */
+    .tariff-row-main h4 { font-size: 1.1rem !important; font-weight: 700; }
+    
+    /* Кнопка плюса (как на макете - без кружка) */
+    .t-plus { 
+        width: 100%; 
+        height: 30px; 
+        font-size: 1.8rem; 
+        background: transparent !important; 
+        border: none !important; 
+        color: #000 !important; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .tariff-row.active .t-plus { 
+        transform: rotate(45deg); 
+        background: transparent !important;
+        color: #000 !important;
+        border: none !important;
+    }
+
+    /* Строки с галочками */
+    .t-detail-item { 
+        grid-template-columns: 1fr 45px 45px 45px !important; 
+        gap: 0;
+        padding: 1rem 0 !important; 
+        border-bottom: 1px solid #f0f0f0 !important; 
+        align-items: center;
+    }
+    .t-detail-item > div:last-child { display: none !important; } /* Прячем 5-й технический блок */
+    
+    .t-detail-name { 
+        padding-left: 0 !important; 
+        font-size: 0.8rem !important; 
+        font-weight: 400; 
+        color: #333; 
+        line-height: 1.3;
+        padding-right: 10px;
+    }
+    
+    /* Сами галочки */
+    .t-check { 
+        text-align: center; 
+        font-size: 1.2rem !important; 
+        color: #000 !important; 
+        margin-top: 0 !important; 
+        font-weight: 300;
+    }
+    .t-check::before { content: none !important; } /* Убираем надпись "Включено в тариф" */
+    
+    .tariffs-footer-line { 
+        display: none !important; /* Убираем дублирование цен в самом низу на мобилках */
+    }
+
+/* 6. КАЛЬКУЛЯТОР */
+    .calc-tabs { flex-wrap: wrap; justify-content: center; }
+    .calc-tab { padding: 10px 15px; font-size: 0.8rem; }
+    .calc-main-box { flex-direction: column !important; border-radius: 20px; }
+    .calc-left, .calc-right { padding: 30px 20px !important; text-align: center; }
+    .calc-left h2 { font-size: 1.6rem !important; }
+    .calc-input-row { flex-direction: column !important; }
+    .calc-input-row input { width: 100% !important; }
+    .result-price { font-size: 2.2rem !important; }
+    
+    /* Делаем кнопку красивой и широкой на мобилках */
+    .btn-calc-trigger { 
+        width: 100% !important; 
+        padding: 18px 20px !important; /* Выравниваем высоту с полем ввода */
+        font-size: 14px !important; 
+        letter-spacing: 1px; /* Добавляем премиального "воздуха" между буквами */
+    }
+
+    /* 7. ПОРТФОЛИО */
+    .portfolio-section-white { padding: 4rem 0; }
+    .portfolio-grid { grid-template-columns: 1fr !important; gap: 30px; }
+
+    /* 8. ХОТИТЕ ТАКЖЕ (ФОРМА) */
+    .want-same-box { 
+        grid-template-columns: 1fr !important; 
+        padding: 30px 20px !important; 
+        text-align: center; 
+        border-radius: 20px; 
+    }
+    .want-same-text h2 { font-size: 1.8rem !important; }
+    .want-same-form { flex-direction: column !important; align-items: stretch; }
+
+    /* 9. ФУТЕР И ВИДЖЕТ */
+    .footer-grid { grid-template-columns: 1fr !important; gap: 2.5rem; text-align: left; }
+    .footer-col { align-items: flex-start !important; }
+    .footer-bottom { flex-direction: column; gap: 1rem; }
+    
+    /* Фикс виджета (чтобы иконки не двоились) */
+    .fab-main-trigger svg, .fab-icon-close { position: absolute !important; }
+  
+}
+      @media (max-width: 480px) {
+    /* Расстояние между ТГ и Телефоном на малых экранах */
+    .header-contacts {
+        gap: 12px !important; 
+    }
+    /* Расстояние между блоком контактов и гамбургером */
+    .nav-right {
+        gap: 1rem !important;
+    }
+    .logo-box {
+        font-size: 0.85rem !important;
+        letter-spacing: 0.5px !important;
+    }
+        /* 1. Делаем кнопку калькулятора похожей на рамку сверху */
+ 
+    .btn-calc {
+        border-radius: 1 !important; /* Делаем углы острыми как у рамки */
+        padding: 1.2rem 1.5rem !important;
+        font-size: 0.9rem !important;
+        justify-content: center !important; /* Текст по центру */
+    }
+    
+    .btn-calc .icon-circle { display: none; } /* Убираем кружок со стрелкой для строгости */
+
+ /* 3. Обнуляем боковые отступы у текста (теперь работает отступ контейнера) */
+/* 3. Текст (список работ): отводим от краев */
+   /* 3. Обнуляем боковые отступы у текста (теперь работает отступ контейнера) */
+    .tab-content {
+        padding: 0 !important; /* УБРАЛИ 15px по бокам, чтобы точки встали в одну линию с кнопками */
+    }
+
+    .work-list li {
+        font-size: 1rem !important;
+        line-height: 1.5;
+        padding-right: 10px; /* Чтобы текст не упирался в правый край */
+    }
+}
+    </style>
+</head>
+<body>
+
+   <header class="header">
+    <div class="container nav">
+        <!-- Логотип -->
+        <a href="index.html" class="logo-box">УРАЛ<span>СТРОЙ</span>ГАРАНТ</a>
+        
+        <!-- Десктопное меню -->
+        <div class="nav-menu">
+    <a href="index.html">Главная</a>
+    <a href="design.html">Дизайн</a>
+    <a href="cottages.html">Дома</a>
+    <a href="restoration.html">Реставрация</a>
+    <a href="showcase.html">Портфолио</a>
+</div>
+
+        <!-- Блок контактов и мобильная кнопка -->
+        <div class="nav-right">
+            <div class="header-contacts">
+                <!-- Telegram -->
+                <a href="https://t.me/your_account" class="contact-icon" title="Telegram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.91-1.27 4.85-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                </a>
+                <!-- Телефон (открывает модальное окно) -->
+                <div class="contact-icon" onclick="openPhoneModal()" title="Позвонить" style="cursor: pointer;">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                </div>
+            </div>
+            
+            <!-- Кнопка гамбургер (для мобилок) -->
+          <div class="menu-toggle" id="mobile-menu-btn" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+</div>
+          
+        </div>
+    </div>
+</header>
+
+<!-- МОБИЛЬНОЕ МЕНЮ (ВЫЕЗЖАЕТ) -->
+<!-- МОБИЛЬНОЕ МЕНЮ (ВЫЕЗЖАЕТ) -->
+<div class="mobile-overlay" id="mobile-menu">
+    <!-- Кнопка закрытия (крестик) -->
+    <div style="position: absolute; top: 30px; right: 30px; color: #B87333; font-size: 40px; cursor: pointer;" onclick="toggleMenu()">&times;</div>
+    
+    <a href="index.html" onclick="toggleMenu()">Главная</a>
+    <a href="design.html" onclick="toggleMenu()">Дизайн</a>
+    <a href="cottages.html" onclick="toggleMenu()">Дома</a>
+    <a href="restoration.html" onclick="toggleMenu()">Реставрация</a>
+    <a href="showcase.html" onclick="toggleMenu()">Портфолио</a>
+    <div class="mobile-phone" onclick="openPhoneModal()">+7 (343) 266-37-25</div>
+</div>
+<!-- МОДАЛЬНОЕ ОКНО С ТЕЛЕФОНОМ -->
+<div class="phone-modal-overlay" id="phoneModal">
+    <div class="phone-modal-card">
+        <div class="close-modal" onclick="closePhoneModal()">&times;</div>
+        <span class="modal-label">Связаться с нами</span>
+        <a href="tel:+73432663725" class="modal-phone-number">+7 (343) 266-37-25</a>
+        <p>Пн-Пт: 09:00 — 18:00</p>
+        <div class="modal-divider"></div>
+        <p style="font-size: 0.7rem; opacity: 0.6;">Нажмите на номер, чтобы позвонить</p>
+    </div>
+</div>
+    <main>
+        <!-- 1. HERO -->
+        <section class="container hero-capsule">
+            <div class="hero-grid">
+                <div class="hero-left-half">
+                    <div class="hero-left-content">
+                        <h1>КАПСУЛЬНЫЙ <br><span>РЕМОНТ</span></h1>
+                        <div class="border-box">ДИЗАЙН И РЕМОНТ ПО ФИКСИРОВАННОЙ ЦЕНЕ СО ВСЕМИ РАБОТАМИ</div>
+                    </div>
+                </div>
+                <div class="hero-right-half">
+                    <div class="hero-right-content">
+                        <p class="main-desc">Капсульный ремонт — ремонт «под ключ» по заранее известной цене</p>
+                        <div class="badge-group">
+                            <div class="badge-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16"><polyline points="20 6 9 17 4 12"></polyline></svg> Никаких смет</div>
+                            <div class="badge-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg> Никаких удорожаний</div>
+                        </div>
+                        <div class="action-btns">
+                            <a href="#calculator" class="btn-action btn-calc">Калькулятор ремонта <div class="icon-circle">→</div></a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="subtle-divider">
+
+        <!-- 2. VIDEO -->
+<section class="container video-section">
+    <div class="video-wrapper">
+        <!-- ВЕРХНЯЯ ЧАСТЬ (Только заголовок) -->
+        <div class="video-content-top">
+            <h2 class="video-title">ЧТО ТАКОЕ КАПСУЛЬНЫЙ РЕМОНТ ЗА 1 МИНУТУ</h2>
+        </div>
+
+        <!-- НИЖНЯЯ ЧАСТЬ (Кнопка смотреть) -->
+        <div class="video-content-bottom">
+            <div class="play-btn-group">
+                <div class="play-circle">
+                    <svg viewBox="0 0 24 24" width="30"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <span class="play-text">СМОТРЕТЬ</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. ЧТО ВХОДИТ В СТОИМОСТЬ -->
+<section class="container included-section">
+    <h2 class="included-title">ЧТО ВХОДИТ В <span>СТОИМОСТЬ</span></h2>
+    
+    <!-- ГЛАВНЫЙ КОНТЕЙНЕР ДЛЯ ДВУХ КОЛОНОК -->
+    <div class="tabs-container">
+        
+        <!-- ЛЕВАЯ КОЛОНКА: КНОПКИ -->
+    
+           <div class="tabs-nav">
+    <!-- Полы (плитка/сетка) -->
+    <div class="tab-item active" onclick="showTab('floors', this)">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z"/></svg>
+        <span>Полы</span>
+    </div>
+    <!-- Стены (кирпичная кладка) -->
+    <div class="tab-item" onclick="showTab('walls', this)">
+        <svg viewBox="0 0 24 24"><path d="M21 4H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM8 18H3v-4h5v4zm0-6H3V8h5v4zm10 6h-8v-4h8v4zm0-6h-8V8h8v4zm5 6h-3v-4h3v4zm0-6h-3V8h3v4z"/></svg>
+        <span>Стены</span>
+    </div>
+    <!-- Потолок (линия верха и лампа) -->
+    <div class="tab-item" onclick="showTab('ceiling', this)">
+        <svg viewBox="0 0 24 24"><path d="M2 4h20v2H2V4zm5 3h10v2h-3v5h-4V9H7V7z"/></svg>
+        <span>Потолок</span>
+    </div>
+    <!-- Сантехника (кран) -->
+    <div class="tab-item" onclick="showTab('plumbing', this)">
+        <svg viewBox="0 0 24 24"><path d="M18 7c0-1.1-.9-2-2-2h-3V2h-2v3H9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1c1.1 0 2 .9 2 2v1c0 1.1.9 2 2 2h1v3.5c0 1.93-1.57 3.5-3.5 3.5S6 19.43 6 17.5V17h-2v.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V14h1c1.1 0 2-.9 2-2v-1h1c1.1 0 2-.9 2-2V7z"/></svg>
+        <span>Сантехника</span>
+    </div>
+    <!-- Электрика (лампочка) -->
+    <div class="tab-item" onclick="showTab('electric', this)">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2 18h-4v1h4v-1zm1 2H9v1h6v-1z"/></svg>
+        <span>Электрика</span>
+    </div>
+</div>
+        </div>
+
+        <!-- ПРАВАЯ КОЛОНКА: ТЕКСТ (СПИСОК) -->
+        <div class="tab-content">
+            <ul class="work-list" id="work-list">
+                <li>Грунтование пола (перед стяжкой, перед кладкой плитки)</li>
+                <li>Установка/смятие маяков</li>
+                <li>Цементно-песчаная стяжка пола (толщина до 50 мм)</li>
+                <li>Укладка ламината на пол в жилых комнатах (на подложку)</li>
+            </ul>
+        </div>
+
+    
+</section>
+
+        <!-- 4. ТАК МОЖЕТ ВЫГЛЯДЕТЬ ВАША КВАРТИРА -->
+  <!-- 4. ТАК МОЖЕТ ВЫГЛЯДЕТЬ ВАША КВАРТИРА -->
+    <!-- 4. ТАК МОЖЕТ ВЫГЛЯДЕТЬ ВАША КВАРТИРА (ЗАКРУГЛЕННЫЕ ФОТО) -->
+<!-- 4. ТАК МОЖЕТ ВЫГЛЯДЕТЬ ВАША КВАРТИРА (ЗАКРУГЛЕННЫЕ ФОТО) -->
+        <section class="container styles-section">
+            <div class="styles-header">
+                <h2>ТАК МОЖЕТ ВЫГЛЯДЕТЬ <span>ВАША КВАРТИРА</span></h2>
+            </div>
+            
+            <div class="styles-grid">
+                <!-- КЛАССИКА -->
+                <div class="style-column">
+                    <h3>Классика</h3>
+                    <div class="style-img-wrap"><img src="img/classic_1.webp" alt="Классика 1"></div>
+                    <div class="style-img-wrap"><img src="img/classic_2.webp" alt="Классика 2"></div>
+                    <div class="style-img-wrap"><img src="img/classic_3.webp" alt="Классика 3"></div>
+                    
+                    <div class="hidden-gallery">
+                        <div class="style-img-wrap"><img src="img/classic_4.webp" alt="Классика 4"></div>
+                        <div class="style-img-wrap"><img src="img/classic_5.webp" alt="Классика 5"></div>
+                        <div class="style-img-wrap"><img src="img/classic_6.webp" alt="Классика 6"></div>
+                        <div class="style-img-wrap"><img src="img/classic_7.webp" alt="Классика 7"></div>
+                        <div class="style-img-wrap"><img src="img/classic_8.webp" alt="Классика 8"></div>
+                    </div>
+                    <!-- Кнопка только для мобилок -->
+                    <div class="mobile-expand-wrapper">
+                        <button class="btn-expand-column" onclick="toggleColumnStyles(this)">Посмотреть ещё</button>
+                    </div>
+                </div>
+
+                <!-- ЛОФТ -->
+                <div class="style-column">
+                    <h3>Лофт</h3>
+                    <div class="style-img-wrap"><img src="img/loft_1.webp" alt="Лофт 1"></div>
+                    <div class="style-img-wrap"><img src="img/loft_2.webp" alt="Лофт 2"></div>
+                    <div class="style-img-wrap"><img src="img/loft_3.webp" alt="Лофт 3"></div>
+                    
+                    <div class="hidden-gallery">
+                        <div class="style-img-wrap"><img src="img/loft_4.webp" alt="Лофт 4"></div>
+                        <div class="style-img-wrap"><img src="img/loft_5.webp" alt="Лофт 5"></div>
+                        <div class="style-img-wrap"><img src="img/loft_6.webp" alt="Лофт 6"></div>
+                        <div class="style-img-wrap"><img src="img/loft_7.webp" alt="Лофт 7"></div>
+                        <div class="style-img-wrap"><img src="img/loft_8.webp" alt="Лофт 8"></div>
+                    </div>
+                    <!-- Кнопка только для мобилок -->
+                    <div class="mobile-expand-wrapper">
+                        <button class="btn-expand-column" onclick="toggleColumnStyles(this)">Посмотреть ещё</button>
+                    </div>
+                </div>
+
+                <!-- МИНИМАЛИЗМ -->
+                <div class="style-column">
+                    <h3>Минимализм</h3>
+                    <div class="style-img-wrap"><img src="img/min_1.webp" alt="Минимализм 1"></div>
+                    <div class="style-img-wrap"><img src="img/min_2.webp" alt="Минимализм 2"></div>
+                    <div class="style-img-wrap"><img src="img/min_3.webp" alt="Минимализм 3"></div>
+                    
+                    <div class="hidden-gallery">
+                        <div class="style-img-wrap"><img src="img/min_4.webp" alt="Минимализм 4"></div>
+                        <div class="style-img-wrap"><img src="img/min_5.webp" alt="Минимализм 5"></div>
+                        <div class="style-img-wrap"><img src="img/min_6.webp" alt="Минимализм 6"></div>
+                        <div class="style-img-wrap"><img src="img/min_7.webp" alt="Минимализм 7"></div>
+                        <div class="style-img-wrap"><img src="img/min_8.webp" alt="Минимализм 8"></div>
+                    </div>
+                    <!-- Кнопка только для мобилок -->
+                    <div class="mobile-expand-wrapper">
+                        <button class="btn-expand-column" onclick="toggleColumnStyles(this)">Посмотреть ещё</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Эта кнопка будет работать только на ПК -->
+            <div class="styles-footer">
+                <button class="btn-expand-all" onclick="toggleAllStyles(this)">Посмотреть ещё</button>
+            </div>
+        </section>
+
+        <!-- 5. ЧТО ВЫ ПОЛУЧАЕТЕ -->
+<!-- 5. ЧТО ВЫ ПОЛУЧАЕТЕ (ИСПРАВЛЕННАЯ СЕТКА) -->
+        <section class="container benefits-section">
+            <h2 class="benefits-title">ЧТО <span>ВЫ ПОЛУЧАЕТЕ</span></h2>
+            <div class="benefits-grid">
+                <!-- 1 -->
+                <div class="benefit-card c-1">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg></div>
+                    <div class="benefit-info">
+                        <h4>Дизайн проект</h4>
+                        <p>Сделаем замер квартиры, грамотную планировку, план расстановки мебели и оборудования, план электрики, сантехники, демонтажа и монтажа перегородок.</p>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="benefit-card c-2">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3v12h2v4h16v-4h2V8h-3zM5 14V6h10v8H5zm14 4H7v-2h10V10h2v8z"/></svg></div>
+                    <div class="benefit-info">
+                        <h4>Логистика</h4>
+                        <p>Доставим, разгрузим и проверим все материалы на целостность, комплектность, отсутствие брака и наличие сертификатов соответствия.</p>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="benefit-card c-3">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+                    <div class="benefit-info">
+                        <h4>Консультация дизайнера</h4>
+                        <p>Дизайнер поможет сформировать список гармонично сочетающихся чистовых материалов, элементов декора. Вы можете выбрать понравившуюся стилистику.</p>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="benefit-card c-4">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+                    <div class="benefit-info">
+                        <h4>Уборка</h4>
+                        <p>По окончании ремонта проведем влажную послестроительную уборку. Вам останется только завезти личные вещи.</p>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="benefit-card c-5">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M19 7h-8v7h8V7zm2-4H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/></svg></div>
+                    <div class="benefit-info">
+                        <h4>Отделочные работы</h4>
+                        <p>Выполним все работы «под ключ» от стяжки до укладки плитки, поклейки обоев, установки розеток, выключателей, светильников и сантехники.</p>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="benefit-card c-6">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div>
+                    <div class="benefit-info">
+                        <h4>Гарантия</h4>
+                        <p>Все используемые материалы экологичны, безопасны и сертифицированы. Работы выполняются по договору с последующей гарантией.</p>
+                    </div>
+                </div>
+                <!-- 7 -->
+                <div class="benefit-card c-7">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg></div>
+                    <div class="benefit-info">
+                        <h4>Технический надзор</h4>
+                        <p>Инженер технического надзора примет каждый из 12 этапов выполнения работ в соответствии со стандартом ГОСТ и СНиП и пришлет фотоотчет.</p>
+                    </div>
+                </div>
+                <!-- 8 -->
+                <div class="benefit-card c-8">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg></div>
+                    <div class="benefit-info">
+                        <h4>Ваше свободное время</h4>
+                        <p>С учетом опыта работы нашей команды на сложных квартирах и проектах, капсульный ремонт выполняем за 4-5 месяцев без вашего участия.</p>
+                    </div>
+                </div>
+                <!-- 9 -->
+                <div class="benefit-card c-9">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3v12h2v4h16v-4h2V8h-3zM5 14V6h10v8H5zm14 4H7v-2h10V10h2v8z"/></svg></div>
+                    <div class="benefit-info">
+                        <h4>Комплектация</h4>
+                        <p>Полностью укомплектуем ваш объект чистовыми материалами до сервировки стола и зубных щеток в стаканчике.</p>
+                    </div>
+                </div>
+                <!-- 10 -->
+                <div class="benefit-card c-10">
+                    <div class="benefit-icon"><svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg></div>
+                    <div class="benefit-info">
+                        <h4>Новоселье</h4>
+                        <p>Через 4-5 месяцев мы отдадим вам ключи от квартиры с ремонтом, готовому к вашему переезду.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ТАРИФЫ -->
+     <!-- 6. ТАРИФЫ (ПОЛНАЯ КОПИЯ СКРИНШОТОВ) -->
+        <section class="tariffs-section">
+            <div class="container">
+                <!-- Шапка таблицы -->
+                <div class="tariffs-header-grid">
+                    <div class="t-head-title">
+                        <h2>Тарифы</h2>
+                        <p>Указана стоимость за 1 м² по полу</p>
+                        <p>(за строительные работы без учёта материалов)</p>
+                    </div>
+                    <div class="t-head-item">
+                        <span>Стейджинг</span>
+                        <strong>19 900 ₽</strong>
+                        <small>Предчистовая отделка</small>
+                    </div>
+                    <div class="t-head-item">
+                        <span>Комфорт</span>
+                        <strong>34 900 ₽</strong>
+                        <small>Все работы «под ключ»</small>
+                    </div>
+                    <div class="t-head-item">
+                        <span>Комфорт +</span>
+                        <strong>45 900 ₽</strong>
+                        <small>Все работы «под ключ»</small>
+                    </div>
+                    <div></div>
+                </div>
+
+                <!-- 1. ПОЛЫ -->
+                <div class="tariff-row">
+                    <div class="tariff-row-main" onclick="this.parentElement.classList.toggle('active')">
+                        <h4>Полы</h4>
+                        <div></div><div></div><div></div>
+                        <div class="t-plus">+</div>
+                    </div>
+                    <div class="tariff-content">
+                        <div class="t-detail-item">
+                            <div class="t-detail-name">Стяжка пола работа</div>
+                            <div></div><div class="t-check">✓</div><div class="t-check">✓</div><div></div>
+                        </div>
+                        <div class="t-detail-item">
+                            <div class="t-detail-name">Настил ламината работа</div>
+                            <div></div><div class="t-check">✓</div><div class="t-check">✓</div><div></div>
+                        </div>
+                        <div class="t-detail-item">
+                            <div class="t-detail-name">Укладка плитки пол работа</div>
+                            <div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div>
+                        </div>
+                        <div class="t-detail-item">
+                            <div class="t-detail-name">Плинтуса работа</div>
+                            <div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div>
+                        </div>
+                        <div class="t-detail-item">
+                            <div class="t-detail-name">Порожки работа</div>
+                            <div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. СТЕНЫ -->
+                <div class="tariff-row">
+                    <div class="tariff-row-main" onclick="this.parentElement.classList.toggle('active')">
+                        <h4>Стены</h4>
+                        <div></div><div></div><div></div>
+                        <div class="t-plus">+</div>
+                    </div>
+                    <div class="tariff-content">
+                        <div class="t-detail-item"><div class="t-detail-name">Грунтование стен</div><div></div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                        <div class="t-detail-item"><div class="t-detail-name">Оштукатуривание стен</div><div></div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                        <div class="t-detail-item"><div class="t-detail-name">Установка уголков</div><div></div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                        <div class="t-detail-item"><div class="t-detail-name">Шпаклевание под обои</div><div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                        <div class="t-detail-item"><div class="t-detail-name">Оклейка обоями</div><div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                    </div>
+                </div>
+
+                <!-- 3. ПОТОЛОК -->
+                <div class="tariff-row">
+                    <div class="tariff-row-main" onclick="this.parentElement.classList.toggle('active')">
+                        <h4>Потолок</h4>
+                        <div></div><div></div><div></div>
+                        <div class="t-plus">+</div>
+                    </div>
+                    <div class="tariff-content">
+                        <div class="t-detail-item"><div class="t-detail-name">Монтаж теневого профиля</div><div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                        <div class="t-detail-item"><div class="t-detail-name">Натяжной потолок в один уровень</div><div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                    </div>
+                </div>
+
+                <!-- 4. САНТЕХНИКА -->
+                <div class="tariff-row">
+                    <div class="tariff-row-main" onclick="this.parentElement.classList.toggle('active')">
+                        <h4>Сантехника</h4>
+                        <div></div><div></div><div></div>
+                        <div class="t-plus">+</div>
+                    </div>
+                    <div class="tariff-content">
+                        <div class="t-detail-item"><div class="t-detail-name">Разводка точек (ХВС, ГВС)</div><div></div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                        <div class="t-detail-item"><div class="t-detail-name">Установка ванны</div><div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                        <div class="t-detail-item"><div class="t-detail-name">Установка унитаза</div><div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                    </div>
+                </div>
+
+                <!-- 5. ЭЛЕКТРИКА -->
+                <div class="tariff-row">
+                    <div class="tariff-row-main" onclick="this.parentElement.classList.toggle('active')">
+                        <h4>Электрика</h4>
+                        <div></div><div></div><div></div>
+                        <div class="t-plus">+</div>
+                    </div>
+                    <div class="tariff-content">
+                        <div class="t-detail-item"><div class="t-detail-name">Монтаж электроточки</div><div></div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                        <div class="t-detail-item"><div class="t-detail-name">Установка розеток и выключателей</div><div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                        <div class="t-detail-item"><div class="t-detail-name">Монтаж люстр и бра</div><div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                    </div>
+                </div>
+
+                <!-- 6. ДВЕРИ -->
+                <div class="tariff-row">
+                    <div class="tariff-row-main" onclick="this.parentElement.classList.toggle('active')">
+                        <h4>Двери</h4>
+                        <div></div><div></div><div></div>
+                        <div class="t-plus">+</div>
+                    </div>
+                    <div class="tariff-content">
+                        <div class="t-detail-item"><div class="t-detail-name">Установка межкомнатных дверей</div><div class="t-check">✓</div><div class="t-check">✓</div><div class="t-check">✓</div><div></div></div>
+                    </div>
+                </div>
+
+                <!-- Итоговая строка -->
+                <div class="tariffs-footer-line">
+                    <div>Стоимость за 1 м² по полу</div>
+                    <div style="text-align: center; color: #888; font-weight: 400;">от</div>
+                    <div style="text-align: center;">19 900 ₽</div>
+                    <div style="text-align: center;">34 900 ₽</div>
+                    <div style="text-align: center;">45 900 ₽</div>
+                    <div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. КАЛЬКУЛЯТОР -->
+   <!-- 7. КАЛЬКУЛЯТОР (ПО СКРИНШОТУ) -->
+<section id="calculator" class="calc-section">
+    <div class="container">
+        <!-- Кнопки переключения тарифов сверху -->
+        <div class="calc-tabs">
+            <button class="calc-tab" onclick="setTariff(19900, this)">Стейджинг</button>
+            <button class="calc-tab active" onclick="setTariff(34900, this)">Комфорт</button>
+            <button class="calc-tab" onclick="setTariff(45900, this)">Комфорт +</button>
+        </div>
+
+        <div class="calc-main-box">
+            <!-- Левая оранжевая часть -->
+            <div class="calc-left">
+                <h2>РАССЧИТАЙТЕ СТОИМОСТЬ РЕМОНТА</h2>
+                <p>Введите площадь своей квартиры</p>
+                <div class="calc-input-row">
+                    <input type="number" id="areaInput" placeholder="Площадь" oninput="calculatePrice()">
+                    <button class="btn-calc-trigger" onclick="calculatePrice()">Рассчитать стоимость</button>
+                </div>
+            </div>
+
+            <!-- Правая черная часть -->
+            <div class="calc-right">
+                <p>Общая стоимость строительных работ:</p>
+                <div class="result-price" id="totalDisplay">₽ 0</div>
+               <button class="btn-book-now" onclick="openBookModal()">Забронировать ремонт</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- 8. ПОРТФОЛИО -->
+     <!-- 8. ПРИМЕРЫ НАШИХ РАБОТ (СВЕТЛЫЙ СТИЛЬ) -->
+<section id="projects" class="portfolio-section-white">
+    <div class="container">
+        <h2 class="portfolio-title-dark">Примеры <span>наших работ</span></h2>
+        
+        <div class="portfolio-grid">
+            <!-- Работа 1 -->
+            <a href="showcase.html" class="portfolio-item">
+                <div class="portfolio-img-wrap">
+                    <img src="img/CR_1.webp" alt="ЖК Эмеральд">
+                </div>
+                <div class="portfolio-info">
+                    <h4>ЖК Эмеральд»</h4>
+                </div>
+            </a>
+
+            <!-- Работа 2 -->
+            <a href="showcase.html" class="portfolio-item">
+                <div class="portfolio-img-wrap">
+                    <img src="img/CR_2.webp" alt="ЖК Достоевский">
+                </div>
+                <div class="portfolio-info">
+                    <h4>ЖК Достоевский»</h4>
+                </div>
+            </a>
+
+            <!-- Работа 3 -->
+            <a href="showcase.html" class="portfolio-item">
+                <div class="portfolio-img-wrap">
+                    <img src="img/CR_3.webp" alt="Дом в Домодедово">
+                </div>
+                <div class="portfolio-info">
+                    <h4>Дом в Домодедово»</h4>
+                </div>
+            </a>
+
+            <!-- Работа 4 -->
+            <a href="showcase.html" class="portfolio-item">
+                <div class="portfolio-img-wrap">
+                    <img src="img/CR_4.webp" alt="ЖК Воронцовский Парк">
+                </div>
+                <div class="portfolio-info">
+                    <h4>ЖК Воронцовский Парк»</h4>
+                </div>
+            </a>
+
+            <!-- Работа 5 -->
+            <a href="showcase.html" class="portfolio-item">
+                <div class="portfolio-img-wrap">
+                    <img src="img/CR_5.webp" alt="ЖК Царская площадь">
+                </div>
+                <div class="portfolio-info">
+                    <h4>ЖК Царская площадь»</h4>
+                </div>
+            </a>
+
+            <!-- Работа 6 -->
+            <a href="showcase.html" class="portfolio-item">
+                <div class="portfolio-img-wrap">
+                    <img src="img/CR_6.webp" alt="ЖК Созидатели">
+                </div>
+                <div class="portfolio-info">
+                    <h4>ЖК Созидатели»</h4>
+                </div>
+            </a>
+        </div>
+
+        <div class="portfolio-footer">
+            <a href="showcase.html" class="btn-portfolio-blue">Посмотреть еще в портфолио</a>
+        </div>
+    </div>
+</section>
+
+        <!-- 9. ХОТИТЕ ТАКЖЕ? -->
+<!-- 9. ХОТИТЕ ТАКЖЕ? -->
+<!-- 9. ХОТИТЕ ТАКЖЕ? -->
+<section class="container" style="margin-bottom: 80px;">
+    <div class="want-same-box">
+        <div class="want-same-text">
+            <h2>Хотите также?</h2>
+            <p>Оставьте заявку и наш менеджер свяжется с вами в ближайшее время</p>
+        </div>
+        <form class="want-same-form" id="wantSameForm">
+            <div style="flex: 1; min-width: 200px;">
+                <input type="text" id="wantName" placeholder="Ваше имя" required style="width: 100%;">
+            </div>
+            
+            <div style="flex: 1; min-width: 200px; position: relative;">
+                <input type="tel" id="wantPhone" placeholder="Номер телефона" required style="width: 100%;">
+                <!-- Красное предупреждение -->
+                <div id="wantPhoneWarning" style="color: #fff; font-size: 0.6rem; background: #ff4d4d; padding: 2px 10px; border-radius: 5px; position: absolute; bottom: -20px; left: 0; display: none;">Используйте только цифры</div>
+            </div>
+
+            <div style="width: 100%; display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 10px;">
+                <button type="submit" class="btn-submit-black">Рассчитать стоимость</button>
+                
+                <!-- Юридический текст -->
+                <p style="font-size: 0.65rem; opacity: 0.8; color: #fff; text-align: center; max-width: 400px; line-height: 1.2;">
+                    Нажимая кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с 
+                    <a href="privacy.html" target="_blank" style="color: #000; text-decoration: underline;">политикой конфиденциальности</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
+  
+ <!-- 10. ОСТАЛИСЬ ВОПРОСЫ? -->
+    <section class="questions-premium">
+        <div class="container">
+          <div class="q-buttons">
+                    <!-- Заменили href и добавили onclick -->
+                    <a href="javascript:void(0)" class="q-btn q-btn-white" onclick="openPhoneModal()">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        Позвонить
+                    </a>
+                    <a href="#" class="q-btn q-btn-tg">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.91-1.27 4.85-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                        Telegram
+                    </a>
+                </div>
+    </section>
+
+    <!-- 11. ПРЕМИАЛЬНЫЙ ФУТЕР -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="logo-box" style="margin-bottom: 1rem;">УРАЛ<span>СТРОЙ</span>ГАРАНТ</a>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 250px;">Профессиональная реализация жилых и коммерческих объектов с 2006 года.</p>
+                    <p style="font-size: 0.8rem; color: #444;">ИНН 6670134875 <br> ОГРН 10696770134820</p>
+                </div>
+                <div class="footer-col">
+                    <span class="footer-label">Навигация</span>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="design.html">Дизайн интерьера</a></li>
+                        <li><a href="cottages.html">Строительство домов</a></li>
+                        <li><a href="restoration.html">Реставрация</a></li>
+                        <li><a href="showcase.html">Портфолио</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <span class="footer-label">Сотрудничество</span>
+                    <ul class="footer-links">
+                        <li><a href="jobs.html">Вакансии</a></li>
+                        <li><a href="suppliers.html">Для поставщиков</a></li>
+                        <li><a href="docs/license_minkult.pdf" download class="download-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--copper)"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                            Лицензия Минкульта
+                        </a></li>
+                    <li>
+            <a href="docs/presentation.pdf" download class="download-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--copper)"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                Презентация компании
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                <div class="footer-col">
+                    <span class="footer-label">Контакты</span>
+                    <p style="font-size: 0.9rem; color: #fff;">Екатеринбург, <br>ул. Мамина-Сибиряка, 14б</p>
+                    <p style="font-size: 1.1rem; font-weight: 700; color: var(--copper);">+7 (343) 266-37-25</p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">uralsg1@yandex.ru</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2006 — 2026 ООО «УРАЛСТРОЙГАРАНТ»</p>
+                <a href="#" style="color: #444; text-decoration: none;">Политика конфиденциальности</a>
+            </div>
+        </div>
+    </footer>
+<!-- МОДАЛЬНОЕ ОКНО (СВЕТЛАЯ ВЕРСИЯ) -->
+<div class="phone-modal-overlay" id="phoneModal">
+    <div class="phone-modal-card">
+        <div class="close-modal" onclick="closePhoneModal()">&times;</div>
+        <span class="modal-label" style="color: var(--orange-brand);">Связаться с нами</span>
+        <a href="tel:+73432663725" class="modal-phone-number" style="color: #000;">+7 (343) 266-37-25</a>
+        <p style="color: #666;">Пн-Пт: 09:00 — 18:00</p>
+        <div class="modal-divider"></div>
+        <p style="font-size: 0.7rem; opacity: 0.6; color: #000;">Нажмите на номер, чтобы позвонить</p>
+    </div>
+</div>
+
+<!-- РАСКРЫВАЮЩИЙСЯ ВИДЖЕТ СВЯЗИ (СВЕТЛАЯ ТЕМА) -->
+<div class="fab-wrapper" id="fabMenu">
+    <div class="fab-main-trigger" onclick="toggleFabMenu(event)">
+        <svg class="icon-phone-main" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <svg class="icon-msg-main" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
+        <span class="fab-icon-close">&times;</span>
+    </div>
+
+    <div class="fab-options">
+        <div class="fab-sub" onclick="alert('Чат в разработке')" title="Написать сообщение">
+            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
+        </div>
+        <div class="fab-sub" onclick="openPhoneModal()" title="Позвонить">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </div>
+    </div>
+</div>
+
+<!-- МОДАЛЬНОЕ ОКНО: ЗАБРОНИРОВАТЬ КАПСУЛЬНЫЙ РЕМОНТ -->
+<!-- МОДАЛЬНОЕ ОКНО: ЗАБРОНИРОВАТЬ КАПСУЛЬНЫЙ РЕМОНТ -->
+<div class="phone-modal-overlay" id="bookModal">
+    <div class="phone-modal-card" id="bookModalCard">
+        <div class="close-modal" onclick="closeBookModal()">&times;</div>
+        
+        <!-- 1. КОНТЕНТ С ФОРМОЙ -->
+        <div id="bookInitialContent">
+            <span class="modal-label" style="color: var(--orange-brand);">Бронирование</span>
+            <h2 style="font-family: 'Playfair Display', serif; color: #000; margin-bottom: 1rem; font-size: 1.8rem;">Забронировать капсульный ремонт</h2>
+            <p style="color: #666; margin-bottom: 2rem; font-size: 0.9rem;">Оставьте заявку, и мы закрепим за вами текущую стоимость работ.</p>
+            
+            <form class="modal-form-light" id="bookForm">
+                <input type="text" id="bookName" placeholder="Ваше имя" required style="width: 100%; padding: 1rem; border: 1px solid #eee; border-radius: 10px; margin-bottom: 1rem; outline: none;">
+                
+                <input type="tel" id="bookPhone" placeholder="Ваш телефон" required style="width: 100%; padding: 1rem; border: 1px solid #eee; border-radius: 10px; outline: none;">
+                <div id="bookPhoneWarning" style="color: #ff4d4d; font-size: 0.7rem; margin-top: 5px; margin-bottom: 1rem; display: none; text-align: left;">Используйте только цифры</div>
+                
+                <button type="submit" class="btn-submit-black" style="width: 100%; margin-top: 1rem; padding: 1.2rem;">Отправить заявку</button>
+            </form>
+            
+            <p style="font-size: 0.65rem; opacity: 0.7; margin-top: 1.5rem; color: #333; line-height: 1.4;">
+                Нажимая кнопку, вы даете согласие на обработку персональных данных и соглашаетесь с 
+                <a href="privacy.html" target="_blank" style="color: var(--orange-brand); text-decoration: underline;">политикой конфиденциальности</a>
+            </p>
+        </div>
+
+        <!-- 2. КОНТЕНТ С ГАЛОЧКОЙ (СКРЫТ ПО УМОЛЧАНИЮ) -->
+        <div id="bookSuccessContent" style="display: none; padding: 20px 0;">
+            <div style="width: 80px; height: 80px; border: 2px solid var(--orange-brand); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--orange-brand)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h2 style="font-family: 'Playfair Display', serif; color: #000; margin-bottom: 1rem; font-size: 2rem;">Спасибо!</h2>
+            <p style="color: #666; margin-bottom: 2rem; font-size: 1rem;">Ваша заявка принята. <br>Мы свяжемся с вами в ближайшее время.</p>
+            <button onclick="closeBookModal()" class="btn-submit-black" style="width: 100%; padding: 1.2rem;">Закрыть</button>
+        </div>
+    </div>
+</div>
+<!-- МОДАЛЬНОЕ ОКНО: УСПЕХ (ОБЩЕЕ) -->
+<div class="phone-modal-overlay" id="successModal">
+    <div class="phone-modal-card" style="background:#fff; border-radius:30px; text-align:center;">
+        <div class="close-modal" onclick="closeSuccessModal()">&times;</div>
+        <div style="width: 80px; height: 80px; border: 2px solid var(--orange-brand); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--orange-brand)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h2 style="font-family: 'Playfair Display', serif; color: #000; margin-bottom: 1rem; font-size: 2rem;">Спасибо!</h2>
+        <p style="color: #666; margin-bottom: 2rem;">Ваша заявка принята. <br>Мы свяжемся с вами в ближайшее время.</p>
+        <button onclick="closeSuccessModal()" class="btn-submit-black" style="width: 100%; padding: 1.2rem;">Закрыть</button>
+    </div>
+</div>
+
+
+<script>
+    // 1. Данные для вкладок "Что входит" (ОБНОВЛЕНО ПО СКРИНШОТАМ)
+    const tabData = {
+        floors: [
+            "Грунтование пола (перед стяжкой, перед кладкой плитки)",
+            "Установка/смятие маяков",
+            "Цементно-песчаная стяжка пола (толщина до 50 мм)",
+            "Укладка ламината на пол в жилых комнатах (на подложку)",
+            "Укладка керамической плитки в санузле",
+            "Укладка керамической плитки на балконе",
+            "Укладка керамической плитки в прихожей",
+            "Монтаж порожка между комнатами",
+            "Монтаж пластикового плинтуса (комнаты, коридор)"
+        ],
+        walls: [
+            "Установка металлических уголков (на все внешние углы и откосы)",
+            "Оштукатуривание стен",
+            "Оштукатуривание откосов",
+            "Шпаклевание стен и откосов под оклейку обоями",
+            "Финишное шлифование стен, откосов перед оклейкой",
+            "Оклейка стен обоями",
+            "Окрашивание откосов",
+            "Обшивка коммуникации гипсокартоном в санузле",
+            "Монтаж отверстий в плитке (до 12 шт.)",
+            "Установка пластикового люка для доступа к коммуникациям в санузле",
+            "Установка межкомнатных дверей (до 35м2 - 2 шт, 35-50 - 3 шт, более 50 м2 - 4 шт.)",
+            "Материалы: Двери межкомнатные (комплект). Дверное полотно, коробка, наличник, ручка, набор петель.",
+            "Кладка керамической плитки в санузле (максимальная длина стороны 600 мм)",
+            "Монтаж решетки вытяжки",
+            "Работы по балкону - оштукатуривание, шпаклевание, окрашивание (без утепления)"
+        ],
+        ceiling: [
+            "Монтаж натяжного потолка (белый матовый ПВХ)",
+            "Установка стенового багета",
+            "Монтаж закладных под люстры и светильники",
+            "Установка декоративной вставки (плинтуса) по периметру",
+            "Обход труб отопления"
+        ],
+        plumbing: [
+            "Разводка сантехнической точки (ХВС, ГВС) 6 точек",
+            "Разводка канализации (до 6 точек)",
+            "Установка ванны",
+            "Установка унитаза",
+            "Установка смесителей (2 шт, на раковину и ванну)",
+            "Установка умывальника"
+        ],
+        electric: [
+            "Монтаж электрической точки",
+            "Прокладка электрического кабеля",
+            "Монтаж распределительных коробок",
+            "Штробление и монтаж подрозетников",
+            "Установка розеток",
+            "Установка выключателей",
+            "Монтаж точечных светильников",
+            "Монтаж люстр и бра",
+            "Монтаж накладного электрического щита",
+            "Установка защитных автоматов 16-25А (до 12 шт.)"
+        ]
+    };
+
+    // 2. Функция переключения вкладок
+    function showTab(category, element) {
+        document.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
+        element.classList.add('active');
+        document.getElementById('work-list').innerHTML = tabData[category].map(text => `<li>${text}</li>`).join('');
+    }
+
+    // 3. Функция раскрытия галереи
+    function toggleAllStyles(btn) {
+        const galleries = document.querySelectorAll('.hidden-gallery');
+        if (galleries.length === 0) return;
+
+        const isHidden = window.getComputedStyle(galleries[0]).display === 'none';
+
+        if (isHidden) {
+            galleries.forEach(gal => { gal.style.display = 'flex'; });
+            btn.innerText = 'Свернуть';
+        } else {
+            galleries.forEach(gal => { gal.style.display = 'none'; });
+            btn.innerText = 'Посмотреть ещё';
+            document.querySelector('.styles-section').scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+// 3.1 Функция раскрытия галереи для конкретной колонки (Мобильная версия)
+    function toggleColumnStyles(btn) {
+        const column = btn.closest('.style-column');
+        const gallery = column.querySelector('.hidden-gallery');
+        
+        if (!gallery) return;
+
+        const isHidden = window.getComputedStyle(gallery).display === 'none';
+
+        if (isHidden) {
+            gallery.style.display = 'flex';
+            btn.innerText = 'Свернуть';
+        } else {
+            gallery.style.display = 'none';
+            btn.innerText = 'Посмотреть ещё';
+            // Прокручиваем обратно к заголовку этой колонки
+            column.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+    // 4. Функция аккордеона в тарифах
+    function toggleTariff(element) {
+        element.parentElement.classList.toggle('active');
+    }
+
+    // 5. Логика калькулятора
+ // Переменная для хранения цены текущего тарифа (по умолчанию Комфорт)
+    let currentPrice = 34900;
+
+    // Функция выбора тарифа
+    function setTariff(price, btn) {
+        currentPrice = price;
+        
+        // Убираем активный класс у всех кнопок тарифов
+        document.querySelectorAll('.calc-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Добавляем активный класс нажатой кнопке
+        btn.classList.add('active');
+        
+        // Пересчитываем цену
+        calculatePrice();
+    }
+
+    // Функция самого расчета
+    function calculatePrice() {
+        const area = document.getElementById('areaInput').value;
+        const display = document.getElementById('totalDisplay');
+        
+        if (area && area > 0) {
+            const total = area * currentPrice;
+            // Форматируем число с пробелами (1 570 500)
+            display.innerText = '₽ ' + total.toLocaleString('ru-RU');
+        } else {
+            display.innerText = '₽ 0';
+        }
+    }
+// --- ЛОГИКА БРОНИРОВАНИЯ (ВОЗВРАЩЕНА) ---
+    function openBookModal() {
+        const modal = document.getElementById('bookModal');
+        const initialContent = document.getElementById('bookInitialContent');
+        const successContent = document.getElementById('bookSuccessContent');
+
+        // Сброс окна на форму
+        if (initialContent) initialContent.style.display = 'block';
+        if (successContent) successContent.style.display = 'none';
+
+        if (modal) {
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+            document.body.classList.add('no-scroll');
+        }
+    }
+
+    function closeBookModal() {
+        const modal = document.getElementById('bookModal');
+        if (modal) {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            }, 400);
+        }
+    }
+
+    const bookForm = document.getElementById('bookForm');
+    if (bookForm) {
+        bookForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('bookName').value;
+            const phone = document.getElementById('bookPhone').value;
+            const price = typeof currentPrice !== 'undefined' ? currentPrice : 'Не указан';
+
+            const message = `<b>🔥 БРОНЬ: КАПСУЛЬНЫЙ РЕМОНТ</b>\n<b>Имя:</b> ${name}\n<b>Телефон:</b> ${phone}\n<b>Тариф:</b> ${price} ₽/м²`;
+
+            fetch(`https://api.telegram.org/bot8684787247:AAEWyzBBwvGhaHwVZVosVuRY1IQg1eyglcM/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: "760645228", text: message, parse_mode: 'html' })
+            })
+            .then(res => {
+                if (res.ok) {
+                    document.getElementById('bookInitialContent').style.display = 'none';
+                    document.getElementById('bookSuccessContent').style.display = 'block';
+                    bookForm.reset();
+                }
+            });
+        });
+    }
+
+    // Валидация телефона для бронирования (ИСПРАВЛЕНО: добавлена красная надпись)
+    const bookPhone = document.getElementById('bookPhone');
+    const bookWarning = document.getElementById('bookPhoneWarning');
+
+    if (bookPhone) {
+        bookPhone.addEventListener('input', function() {
+            // Проверяем на наличие букв
+            const hasLetters = /[a-zA-Zа-яА-Я]/.test(this.value);
+            
+            if (hasLetters) {
+                if (bookWarning) bookWarning.style.display = 'block'; // Показываем красную надпись
+            } else {
+                if (bookWarning) bookWarning.style.display = 'none'; // Прячем
+            }
+
+            // Очищаем поле от букв
+            this.value = this.value.replace(/[^0-9+]/g, '');
+        });
+    }
+// --- ЛОГИКА ВИДЖЕТА FAB ---
+    function toggleFabMenu(e) {
+        if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        const menu = document.getElementById('fabMenu');
+        if (menu) menu.classList.toggle('active');
+    }
+
+    // --- ФУНКЦИИ МОДАЛКИ ТЕЛЕФОНА ---
+    function openPhoneModal() {
+        const modal = document.getElementById('phoneModal');
+        if (modal) {
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+            document.body.classList.add('no-scroll');
+        }
+    }
+
+    function closePhoneModal() {
+        const modal = document.getElementById('phoneModal');
+        if (modal) {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            }, 400);
+        }
+    }
+
+ // --- ОБРАБОТЧИК КЛИКОВ (ЗАКРЫТИЕ ВСЕГО) ---
+    window.addEventListener('click', (e) => {
+        if (e.target.id === 'phoneModal') closePhoneModal();
+        if (e.target.id === 'bookModal') closeBookModal();
+        if (e.target.id === 'successModal') closeSuccessModal();
+
+        const fabMenu = document.getElementById('fabMenu');
+        if (fabMenu && !fabMenu.contains(e.target)) {
+            fabMenu.classList.remove('active');
+        }
+    });
+
+    // --- ФУНКЦИИ ДЛЯ ОКНА УСПЕХА ---
+    function openSuccessModal() {
+        const modal = document.getElementById('successModal');
+        if (modal) {
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('active'), 10);
+            document.body.classList.add('no-scroll');
+        }
+    }
+
+    function closeSuccessModal() {
+        const modal = document.getElementById('successModal');
+        if (modal) {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+            }, 400);
+        }
+    }
+
+    // --- ЛОГИКА ФОРМЫ "ХОТИТЕ ТАКЖЕ?" ---
+    const wantSameForm = document.getElementById('wantSameForm');
+    if (wantSameForm) {
+        wantSameForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('wantName').value;
+            const phone = document.getElementById('wantPhone').value;
+
+            const message = `<b>📩 ХОТИТЕ ТАКЖЕ? (КАПСУЛА)</b>\n<b>Имя:</b> ${name}\n<b>Телефон:</b> ${phone}`;
+
+            fetch(`https://api.telegram.org/bot8684787247:AAEWyzBBwvGhaHwVZVosVuRY1IQg1eyglcM/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: "760645228", text: message, parse_mode: 'html' })
+            })
+            .then(res => {
+                if (res.ok) {
+                    openSuccessModal(); // ТЕПЕРЬ ЭТА ФУНКЦИЯ ЕСТЬ
+                    wantSameForm.reset();
+                } else {
+                    alert("Ошибка отправки.");
+                }
+            });
+        });
+    }
+
+    // Валидация телефона для "Хотите также"
+    const wantPhone = document.getElementById('wantPhone');
+    const wantWarning = document.getElementById('wantPhoneWarning');
+    if (wantPhone) {
+        wantPhone.addEventListener('input', function() {
+            const hasLetters = /[a-zA-Zа-яА-Я]/.test(this.value);
+            if (wantWarning) wantWarning.style.display = hasLetters ? 'block' : 'none';
+            this.value = this.value.replace(/[^0-9+]/g, '');
+        });
+    }
+function toggleMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    }
+}
+
+</script>

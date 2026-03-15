@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реставрация памятников архитектуры | Уралстройгарант</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --dark-bg: #0A0A0A;
+            --dark-card: #141414;
+            --copper: #B87333;
+            --text-light: #E0E0E0;
+            --text-muted: #888888;
+            --transition: all 0.5s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--dark-bg); 
+            color: var(--text-light); 
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ШАПКА */
+        .header {
+            position: sticky; top: 0; z-index: 1000;
+            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(184, 115, 51, 0.3);
+            height: 90px; display: flex; align-items: center;
+        }
+        .nav { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo-box { 
+            font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; 
+            text-transform: uppercase; text-decoration: none; color: #fff; 
+        }
+        .logo-box span { color: var(--copper); }
+        .nav-menu { display: flex; gap: 2.5rem; }
+        .nav-menu a { 
+            text-decoration: none; color: var(--text-light); font-size: 0.65rem; 
+            font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; 
+        }
+        .nav-menu a:hover { color: var(--copper); }
+        .nav-right { display: flex; align-items: center; gap: 2rem; }
+        .header-contacts { display: flex; align-items: center; gap: 20px; }
+        .contact-icon svg { width: 22px; height: 22px; fill: #fff; transition: 0.3s; }
+        .contact-icon:hover svg { fill: var(--copper); }
+
+        /* ГАМБУРГЕР */
+        .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; }
+        .menu-toggle span { width: 28px; height: 2px; background: var(--copper); }
+        @media (max-width: 1024px) { .nav-menu { display: none; } .menu-toggle { display: flex; } }
+
+        /* МОБИЛЬНОЕ МЕНЮ */
+        .mobile-overlay {
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+            background: var(--dark-bg); display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 2rem;
+            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); z-index: 999;
+        }
+        .mobile-overlay.active { right: 0; }
+        .mobile-overlay a { color: #fff; text-decoration: none; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
+
+        /* ЦЕНТРАЛЬНЫЙ БЛОК */
+        .dev-section {
+            min-height: calc(100vh - 90px);
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 4rem 0;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+        }
+        .dev-content { max-width: 850px; }
+        .dev-label { color: var(--copper); text-transform: uppercase; letter-spacing: 5px; font-size: 0.8rem; font-weight: 600; margin-bottom: 2rem; display: block; }
+        .dev-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 2rem; }
+        .dev-content p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem; font-weight: 300; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        .dev-contact-box {
+            background: var(--dark-card); border: 1px solid rgba(184, 115, 51, 0.3);
+            padding: 3rem; border-radius: 30px; display: inline-block;
+        }
+        .dev-phone { font-size: 2rem; font-weight: 800; color: #fff; text-decoration: none; display: block; margin-bottom: 1rem; transition: 0.3s; }
+        .dev-phone:hover { color: var(--copper); }
+        .dev-hint { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--copper); font-weight: 600; }
+
+       /* РАСШИРЕННЫЙ ПРЕМИАЛЬНЫЙ ФУТЕР */
+        .footer-main {
+            background-color: #050505; /* Чуть темнее основного фона для глубины */
+            padding: 8rem 0 4rem;
+            border-top: 1px solid #1a1a1a;
+            color: #fff;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 4rem;
+            margin-bottom: 6rem;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-label {
+            color: var(--copper);
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--copper);
+            padding-left: 5px;
+        }
+
+        /* Стиль для скачиваемых файлов */
+        .download-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            padding-top: 3rem;
+            border-top: 1px solid #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #444;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+        }
+
+        /* МОДАЛКА */
+        .phone-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+            z-index: 2000; display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: 0.4s;
+        }
+        .phone-modal-overlay.active { display: flex; opacity: 1; }
+        .phone-modal-card { background: var(--dark-card); border: 1px solid var(--copper); padding: 50px; border-radius: 20px; text-align: center; position: relative; max-width: 400px; width: 90%; }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 30px; color: var(--copper); cursor: pointer; }
+        .modal-phone-number { color: #fff; font-size: 1.8rem; font-weight: 800; text-decoration: none; display: block; margin: 15px 0; }
+
+        /* ВИДЖЕТ СВЯЗИ */
+       /* --- ВИДЖЕТ СВЯЗИ: ИСПРАВЛЕНИЕ --- */
+.fab-wrapper {
+    position: fixed; bottom: 30px; right: 30px; z-index: 2000;
+    display: flex; flex-direction: column-reverse; align-items: center; gap: 15px;
+}
+.fab-main-trigger {
+    width: 65px; height: 65px; background: var(--copper); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 10px 25px rgba(184, 115, 51, 0.4); cursor: pointer;
+    position: relative; transition: 0.4s;
+    animation: fabPulse 2s infinite;
+}
+.fab-main-trigger svg { position: absolute; width: 28px; fill: #fff; transition: 0.4s; }
+
+/* Анимация смены иконок */
+@keyframes iconToggle { 0%, 45% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes iconToggleAlt { 0%, 45% { opacity: 0; } 50%, 100% { opacity: 1; } }
+.icon-phone-main { animation: iconToggle 4s infinite; }
+.icon-msg-main { animation: iconToggleAlt 4s infinite; }
+
+/* Идеально ровный крестик */
+.fab-icon-close {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: Arial, sans-serif; font-size: 45px; color: #fff; 
+    opacity: 0; transform: scale(0.5); transition: 0.4s;
+    line-height: 0; padding-bottom: 6px;
+}
+
+@keyframes fabPulse {
+    0% { box-shadow: 0 0 0 0 rgba(184, 115, 51, 0.7); transform: scale(1); }
+    70% { box-shadow: 0 0 0 15px rgba(184, 115, 51, 0); transform: scale(1.05); }
+    100% { box-shadow: 0 0 0 0 rgba(184, 115, 51, 0); transform: scale(1); }
+}
+
+.fab-wrapper.active .fab-main-trigger { animation: none; background: #222; transform: rotate(90deg); }
+.fab-wrapper.active .icon-phone-main, .fab-wrapper.active .icon-msg-main { opacity: 0 !important; animation: none; }
+.fab-wrapper.active .fab-icon-close { opacity: 1; transform: scale(1) rotate(-90deg); }
+
+.fab-options { display: flex; flex-direction: column-reverse; gap: 15px; opacity: 0; visibility: hidden; transform: translateY(20px); transition: 0.3s; }
+.fab-wrapper.active .fab-options { opacity: 1; visibility: visible; transform: translateY(0); }
+.fab-sub { width: 50px; height: 50px; background: #1a1a1a; border: 1px solid var(--copper); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.fab-sub svg { width: 22px; fill: var(--copper); }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container nav">
+        <a href="index.html" class="logo-box">УРАЛ<span>СТРОЙ</span>ГАРАНТ</a>
+        <div class="nav-menu">
+            <a href="index.html">Главная</a>
+            <a href="design.html">Дизайн</a>
+            <a href="cottages.html">Дома</a>
+            <a href="restoration.html">Реставрация</a>
+            <a href="showcase.html">Портфолио</a>
+        </div>
+        <div class="nav-right">
+            <div class="header-contacts">
+                <a href="https://t.me/your_account" class="contact-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.91-1.27 4.85-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+                </a>
+                <div class="contact-icon" onclick="openPhoneModal()" style="cursor: pointer;">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                </div>
+            </div>
+            <div class="menu-toggle" id="mobile-menu-btn"><span></span><span></span><span></span></div>
+        </div>
+    </div>
+</header>
+
+<div class="mobile-overlay" id="mobile-menu">
+    <a href="index.html" onclick="toggleMenu()">Главная</a>
+    <a href="design.html" onclick="toggleMenu()">Дизайн</a>
+    <a href="cottages.html" onclick="toggleMenu()">Дома</a>
+    <a href="restoration.html" onclick="toggleMenu()">Реставрация</a>
+    <a href="showcase.html" onclick="toggleMenu()">Портфолио</a>
+</div>
+
+<main class="dev-section">
+    <div class="container">
+        <div class="dev-content">
+            <span class="dev-label">Coming Soon</span>
+            <h1>Реставрация памятников <br>архитектуры</h1>
+            <p>Мы обладаем уникальными инженерными компетенциями по укреплению фундаментов и воссозданию объектов культурного наследия. Раздел находится в стадии наполнения портфолио.</p>
+            
+            <div class="dev-contact-box">
+                <p style="margin-bottom: 1rem; font-weight: 600; color: #fff;">Требуется экспертная консультация?</p>
+                <a href="tel:+73432663725" class="dev-phone">+7 (343) 266-37-25</a>
+                <span class="dev-hint">Свяжитесь с нашими инженерами</span>
+            </div>
+        </div>
+    </div>
+</main>
+
+  <footer class="footer-main">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <!-- Колонка 1: О компании -->
+                <div class="footer-col">
+                    <a href="#" class="logo-box" style="margin-bottom: 1rem;">УРАЛ<span>СТРОЙ</span>ГАРАНТ</a>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; max-width: 250px;">
+                        Профессиональная реализация жилых и коммерческих объектов с 2006 года.
+                    </p>
+                    <p style="font-size: 0.8rem; color: #444;">
+                        ИНН 6670134875 <br> ОГРН 10696770134820
+                    </p>
+                </div>
+
+                <!-- Колонка 2: Навигация -->
+                <div class="footer-col">
+                    <span class="footer-label">Навигация</span>
+                    <ul class="footer-links">
+                        <li><a href="design.html">Дизайн интерьера</a></li>
+                        <li><a href="cottages.html">Строительство домов</a></li>
+                        <li><a href="restoration.html">Реставрация</a></li>
+                        <li><a href="showcase.html">Портфолио</a></li>
+                    </ul>
+                </div>
+
+                <!-- Колонка 3: Документы и Карьера -->
+                <div class="footer-col">
+                    <span class="footer-label">Сотрудничество</span>
+                    <ul class="footer-links">
+                        <li><a href="jobs.html">Вакансии</a></li>
+                        <li><a href="suppliers.html">Для поставщиков</a></li>
+                        <!-- Ссылка на скачивание лицензии -->
+                        <li>
+                            <a href="docs/license_minkult.pdf" download class="download-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--copper)"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                                Лицензия Минкульта
+                            </a>
+                        </li>
+                        <li>
+                            <a href="docs/presentation.pdf" download class="download-link">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--copper)"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                                Презентация компании
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Колонка 4: Контакты -->
+                <div class="footer-col">
+                    <span class="footer-label">Контакты</span>
+                    <p style="font-size: 0.9rem;">Екатеринбург, <br>ул. Мамина-Сибиряка, 14б</p>
+                    <p style="font-size: 1.1rem; font-weight: 700; color: var(--copper);">+7 (343) 266-37-25</p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">uralsg1@yandex.ru</p>
+                </div>
+
+            </div>
+
+            <!-- Нижняя плашка -->
+            <div class="footer-bottom">
+                <p>© 2006 — 2026 ООО «УРАЛСТРОЙГАРАНТ»</p>
+                <div style="display: flex; gap: 2rem;">
+                    <a href="#" style="color: #444; text-decoration: none;">Политика конфиденциальности</a>
+                    <a href="#" style="color: #444; text-decoration: none;">Разработка сайта</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<div class="phone-modal-overlay" id="phoneModal">
+    <div class="phone-modal-card">
+        <div class="close-modal" onclick="closePhoneModal()">&times;</div>
+        <span class="modal-label" style="color: var(--copper); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px; display: block; margin-bottom: 15px;">Связаться с нами</span>
+        <a href="tel:+73432663725" class="modal-phone-number">+7 (343) 266-37-25</a>
+        <p>Пн-Пт: 09:00 — 18:00</p>
+    </div>
+</div>
+
+<div class="fab-wrapper" id="fabMenu">
+    <div class="fab-main-trigger" onclick="toggleFabMenu(event)">
+        <svg class="icon-phone-main" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <svg class="icon-msg-main" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg>
+        <span class="fab-icon-close">&times;</span>
+    </div>
+    <div class="fab-options">
+        <div class="fab-sub" onclick="alert('Чат в разработке')"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg></div>
+        <div class="fab-sub" onclick="openPhoneModal()"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+    </div>
+</div>
+
+<script>
+    function openPhoneModal() {
+        const m = document.getElementById('phoneModal');
+        if(m) { m.style.display = 'flex'; setTimeout(() => m.classList.add('active'), 10); document.body.classList.add('no-scroll'); }
+    }
+    function closePhoneModal() {
+        const m = document.getElementById('phoneModal');
+        if(m) { m.classList.remove('active'); setTimeout(() => { m.style.display = 'none'; document.body.classList.remove('no-scroll'); }, 400); }
+    }
+    function toggleFabMenu(e) {
+        e.stopPropagation();
+        document.getElementById('fabMenu').classList.toggle('active');
+    }
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    function toggleMenu() {
+        menuBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    }
+    if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
+    window.onclick = (e) => {
+        if (e.target.id === 'phoneModal') closePhoneModal();
+        const f = document.getElementById('fabMenu');
+        if (f && !f.contains(e.target)) f.classList.remove('active');
+    }
+</script>
+
+</body>
+
+</html>

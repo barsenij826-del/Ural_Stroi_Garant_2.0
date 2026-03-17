@@ -517,7 +517,89 @@ body.no-scroll { overflow: hidden; }
         <div class="fab-sub" onclick="openPhoneModal()"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
     </div>
 </div>
+<!-- БАННЕР КУКИ (HTML + CSS) -->
+<style>
+    .cookie-notice {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(150%);
+        width: 90%;
+        max-width: 850px;
+        background: rgba(10, 10, 10, 0.85); /* Темный премиальный фон */
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(184, 115, 51, 0.5); /* Медная рамка */
+        padding: 20px 40px;
+        z-index: 30000; /* Самый высокий приоритет */
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .cookie-notice.show { transform: translateX(-50%) translateY(0); }
+    
+    .cookie-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+    }
+    .cookie-content p {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.85rem;
+        color: #ffffff !important;
+        line-height: 1.5;
+        margin: 0;
+        font-weight: 400;
+    }
+    .cookie-content a {
+        color: #B87333 !important; /* Медный цвет ссылок */
+        text-decoration: underline;
+        transition: 0.3s;
+    }
+    .cookie-content a:hover { color: #ffffff !important; }
 
+    /* Автономная кнопка "Принять" */
+    .cookie-btn {
+        background: transparent !important;
+        border: 1px solid #B87333 !important;
+        color: #ffffff !important;
+        padding: 12px 30px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        white-space: nowrap;
+        outline: none;
+    }
+    .cookie-btn:hover {
+        background: #B87333 !important;
+        color: #000000 !important;
+        box-shadow: 0 0 20px rgba(184, 115, 51, 0.4);
+    }
+
+    @media (max-width: 768px) {
+        .cookie-notice { padding: 20px; bottom: 20px; width: 95%; }
+        .cookie-content { flex-direction: column; text-align: center; gap: 20px; }
+        .cookie-btn { width: 100%; max-width: 250px; }
+    }
+</style>
+
+<div id="cookieBanner" class="cookie-notice">
+    <div class="cookie-content">
+        <p>
+            Мы используем cookie и метрические системы для корректной работы сайта. 
+            Продолжая использовать ресурс, вы соглашаетесь с 
+            <a href="privacy.html">Политикой конфиденциальности</a> и 
+            <a href="privacy.html">обработкой персональных данных</a>.
+        </p>
+        <button class="cookie-btn" onclick="acceptCookies()">Принять</button>
+    </div>
+</div>
+<!-- КОНЕЦ БАННЕРА КУКИ -->
+  
 <script>
     function openPhoneModal() {
         const m = document.getElementById('phoneModal');
@@ -544,6 +626,22 @@ body.no-scroll { overflow: hidden; }
         const f = document.getElementById('fabMenu');
         if (f && !f.contains(e.target)) f.classList.remove('active');
     }
+  // ЛОГИКА КУКИ (ВСТАВИТЬ В КОНЕЦ СКРИПТА)
+document.addEventListener("DOMContentLoaded", function() {
+    // Показываем баннер только если куки еще не приняты
+    if (!localStorage.getItem("cookiesAccepted")) {
+        setTimeout(function() {
+            var banner = document.getElementById("cookieBanner");
+            if (banner) banner.classList.add("show");
+        }, 2000); // Задержка 2 секунды для премиального эффекта
+    }
+});
+
+function acceptCookies() {
+    var banner = document.getElementById("cookieBanner");
+    if (banner) banner.classList.remove("show");
+    localStorage.setItem("cookiesAccepted", "true");
+}
 </script>
 
 </body>

@@ -2710,299 +2710,245 @@ section.trust-line-premium {
     </div>
 </div>
   <script>
-    // ========================================================
-    // 1. НАСТРОЙКИ И ОБЩИЕ ПЕРЕМЕННЫЕ
-    // ========================================================
-    const TG_TOKEN = "8684787247:AAEWyzBBwvGhaHwVZVosVuRY1IQg1eyglcM";
-    const TG_CHAT_ID = "760645228";
+   // ========================================================
+// 1. НАСТРОЙКИ
+// ========================================================
+const TG_TOKEN = "8684787247:AAEWyzBBwvGhaHwVZVosVuRY1IQg1eyglcM";
+const TG_CHAT_ID = "760645228";
 
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const phoneModal = document.getElementById('phoneModal');
-    const successModal = document.getElementById('successModal');
-    const zamerModal = document.getElementById('zamerModal'); // Если есть на этой странице
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const phoneModal = document.getElementById('phoneModal');
+const successModal = document.getElementById('successModal');
 
-    // ========================================================
-    // 2. ФУНКЦИИ ОТКРЫТИЯ/ЗАКРЫТИЯ ОКОН
-    // ========================================================
-    function openPhoneModal() {
-        if (phoneModal) {
-            phoneModal.style.display = 'flex';
-            setTimeout(() => phoneModal.classList.add('active'), 10);
-            document.body.classList.add('no-scroll');
-        }
+// ========================================================
+// 2. УПРАВЛЕНИЕ ОКНАМИ И МЕНЮ
+// ========================================================
+function openPhoneModal() {
+    if (phoneModal) {
+        phoneModal.style.display = 'flex';
+        setTimeout(() => phoneModal.classList.add('active'), 10);
+        document.body.classList.add('no-scroll');
     }
-    function closePhoneModal() {
-        if (phoneModal) {
-            phoneModal.classList.remove('active');
-            setTimeout(() => { phoneModal.style.display = 'none'; document.body.classList.remove('no-scroll'); }, 400);
-        }
-    }
+}
 
-    function openSuccessModal() {
-        if (successModal) {
-            successModal.style.display = 'flex';
-            setTimeout(() => successModal.classList.add('active'), 10);
-            document.body.classList.add('no-scroll');
-        }
+function closePhoneModal() {
+    if (phoneModal) {
+        phoneModal.classList.remove('active');
+        setTimeout(() => { 
+            phoneModal.style.display = 'none'; 
+            document.body.classList.remove('no-scroll'); 
+        }, 400);
     }
-    function closeSuccessModal() {
-        if (successModal) {
-            successModal.classList.remove('active');
-            setTimeout(() => { successModal.style.display = 'none'; document.body.classList.remove('no-scroll'); }, 400);
-        }
+}
+
+function openSuccessModal() {
+    if (successModal) {
+        successModal.style.display = 'flex';
+        setTimeout(() => successModal.classList.add('active'), 10);
+        document.body.classList.add('no-scroll');
     }
+}
 
-    function toggleMenu() {
-        if (menuBtn && mobileMenu) {
-            menuBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.classList.toggle('no-scroll');
-        }
+function closeSuccessModal() {
+    if (successModal) {
+        successModal.classList.remove('active');
+        setTimeout(() => { 
+            successModal.style.display = 'none'; 
+            document.body.classList.remove('no-scroll'); 
+        }, 400);
     }
-    if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
+}
 
-    // ========================================================
-    // 3. ВАЛИДАЦИЯ ТЕЛЕФОНА (ДЛЯ ВСЕХ ФОРМ)
-    // ========================================================
-    function setupPhoneValidation(inputId, warningId) {
-        const input = document.getElementById(inputId);
-        const warning = document.getElementById(warningId);
-        if (input) {
-            input.addEventListener('input', function() {
-                const hasLetters = /[a-zA-Zа-яА-Я]/.test(this.value);
-                if (warning) warning.style.display = hasLetters ? 'block' : 'none';
-                this.value = this.value.replace(/[^0-9+]/g, '');
-            });
-        }
+function toggleMenu() {
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
     }
-    setupPhoneValidation('quizPhone', 'quizPhoneWarning');
-    setupPhoneValidation('consultPhone', 'consultPhoneWarning');
+}
+if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
 
-    // ========================================================
-    // 4. ЛОГИКА КВИЗА
-    // ========================================================
-    let currentQuizStep = 1;
-    const totalQuizSteps = 7;
-    const quizAnswers = {};
+// Закрытие по клику на фон
+window.addEventListener('click', (e) => {
+    if (e.target === phoneModal) closePhoneModal();
+    if (e.target === successModal) closeSuccessModal();
+    const fab = document.getElementById('fabMenu');
+    if (fab && !fab.contains(e.target)) fab.classList.remove('active');
+});
 
-    function changeStep(n) {
-        const steps = document.querySelectorAll('.quiz-step');
-        if (n === 1 && !validateQuizStep(currentQuizStep)) {
-            alert("Пожалуйста, выберите вариант или заполните поля.");
-            return;
-        }
-        if (currentQuizStep === totalQuizSteps && n === 1) {
-            sendQuizToTelegram();
-            return;
-        }
-        steps[currentQuizStep - 1].classList.remove('active');
-        steps[currentQuizStep - 1].style.display = 'none';
-        currentQuizStep += n;
-        steps[currentQuizStep - 1].classList.add('active');
-        steps[currentQuizStep - 1].style.display = 'flex';
-        updateQuizUI();
+function toggleFabMenu(e) {
+    e.stopPropagation();
+    document.getElementById('fabMenu').classList.toggle('active');
+}
+
+// ========================================================
+// 3. ВАЛИДАЦИЯ ТЕЛЕФОНА
+// ========================================================
+function setupPhoneValidation(inputId, warningId) {
+    const input = document.getElementById(inputId);
+    const warning = document.getElementById(warningId);
+    if (input) {
+        input.addEventListener('input', function() {
+            const hasLetters = /[a-zA-Zа-яА-Я]/.test(this.value);
+            if (warning) warning.style.display = hasLetters ? 'block' : 'none';
+            this.value = this.value.replace(/[^0-9+]/g, '');
+        });
     }
+}
+setupPhoneValidation('quizPhone', 'quizPhoneWarning');
+setupPhoneValidation('consultPhone', 'consultPhoneWarning');
+setupPhoneValidation('wantPhone', 'wantPhoneWarning');
 
-    function validateQuizStep(step) {
-        if (step === 1) return quizAnswers.objType !== undefined;
-        if (step === 2) return document.querySelector('input[name="area"]:checked');
-        if (step === 3) return document.querySelector('input[name="work_type"]:checked');
-        if (step === 4) return document.querySelector('input[name="prop_type"]:checked');
-        if (step === 5) return document.querySelector('input[name="timing"]:checked');
-        if (step === 7) {
-            return document.getElementById('quizName').value.length > 1 && document.getElementById('quizPhone').value.length > 5;
-        }
-        return true;
+// ========================================================
+// 4. ЛОГИКА КВИЗА
+// ========================================================
+let currentQuizStep = 1;
+const totalQuizSteps = 7;
+const quizAnswers = {};
+
+function changeStep(n) {
+    const steps = document.querySelectorAll('.quiz-step');
+    if (n === 1 && !validateQuizStep(currentQuizStep)) {
+        alert("Пожалуйста, заполните поля.");
+        return;
     }
-
-    function selectOption(step, value) {
-        quizAnswers.objType = value;
-        changeStep(1);
+    if (currentQuizStep === totalQuizSteps && n === 1) {
+        sendQuizToTelegram();
+        return;
     }
+    steps[currentQuizStep - 1].classList.remove('active');
+    steps[currentQuizStep - 1].style.display = 'none';
+    currentQuizStep += n;
+    steps[currentQuizStep - 1].classList.add('active');
+    steps[currentQuizStep - 1].style.display = 'flex';
+    updateQuizUI();
+}
 
-    function updateQuizUI() {
-        const progress = (currentQuizStep / totalQuizSteps) * 100;
-        const progressBar = document.getElementById('quizProgress');
-        if (progressBar) progressBar.style.width = progress + '%';
-        const prevBtn = document.getElementById('prevBtn');
-        if (prevBtn) prevBtn.style.visibility = currentQuizStep === 1 ? 'hidden' : 'visible';
-    }
-
-   function sendQuizToTelegram() {
-        // Собираем данные из радио-кнопок и текстовых полей
-        const area = document.querySelector('input[name="area"]:checked')?.parentElement.textContent.trim() || 'Не указана';
-        const workType = document.querySelector('input[name="work_type"]:checked')?.parentElement.textContent.trim() || 'Не указан';
-        const propType = document.querySelector('input[name="prop_type"]:checked')?.parentElement.textContent.trim() || 'Не указан';
-        const timing = document.querySelector('input[name="timing"]:checked')?.parentElement.textContent.trim() || 'Не указаны';
-        const comment = document.querySelector('.quiz-textarea').value.trim() || 'Нет';
+function validateQuizStep(step) {
+    if (step === 1) return quizAnswers.objType !== undefined;
+    if (step === 2) return document.querySelector('input[name="area"]:checked');
+    if (step === 3) return document.querySelector('input[name="work_type"]:checked');
+    if (step === 4) return document.querySelector('input[name="prop_type"]:checked');
+    if (step === 5) return document.querySelector('input[name="timing"]:checked');
+    if (step === 7) {
         const name = document.getElementById('quizName').value;
         const phone = document.getElementById('quizPhone').value;
+        return name.length > 1 && phone.length > 5;
+    }
+    return true;
+}
 
-        // Формируем полный текст сообщения
-        const message = `
-<b>💎 НОВЫЙ КВИЗ: ДИЗАЙН</b>
-<b>Страница:</b> Дизайн и реализация
-------------------------
-<b>Объект:</b> ${quizAnswers.objType || 'Не выбран'}
-<b>Площадь:</b> ${area}
-<b>Вид работ:</b> ${workType}
-<b>Тип недвижимости:</b> ${propType}
-<b>Сроки:</b> ${timing}
-<b>Комментарий:</b> ${comment}
-------------------------
-<b>Имя:</b> ${name}
-<b>Телефон:</b> ${phone}
-        `;
+function selectOption(step, value) {
+    quizAnswers.objType = value;
+    changeStep(1);
+}
+
+function updateQuizUI() {
+    const progress = (currentQuizStep / totalQuizSteps) * 100;
+    const progressBar = document.getElementById('quizProgress');
+    if (progressBar) progressBar.style.width = progress + '%';
+    const prevBtn = document.getElementById('prevBtn');
+    if (prevBtn) prevBtn.style.visibility = currentQuizStep === 1 ? 'hidden' : 'visible';
+}
+
+function sendQuizToTelegram() {
+    const area = document.querySelector('input[name="area"]:checked')?.parentElement.textContent.trim() || 'Не указана';
+    const workType = document.querySelector('input[name="work_type"]:checked')?.parentElement.textContent.trim() || 'Не указан';
+    const propType = document.querySelector('input[name="prop_type"]:checked')?.parentElement.textContent.trim() || 'Не указан';
+    const timing = document.querySelector('input[name="timing"]:checked')?.parentElement.textContent.trim() || 'Не указаны';
+    const comment = document.querySelector('.quiz-textarea').value.trim() || 'Нет';
+    const name = document.getElementById('quizName').value;
+    const phone = document.getElementById('quizPhone').value;
+
+    const message = `<b>💎 КВИЗ: ДИЗАЙН</b>\n<b>Объект:</b> ${quizAnswers.objType}\n<b>Площадь:</b> ${area}\n<b>Тип:</b> ${propType}\n<b>Имя:</b> ${name}\n<b>Тел:</b> ${phone}`;
+
+    fetch('send.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ subject: "Квиз Дизайн", text: message })
+    })
+    .then(res => { if (res.ok) showQuizSuccess(); })
+    .catch(() => alert("Ошибка сети."));
+}
+
+function showQuizSuccess() {
+    document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+    document.getElementById('quizNav').style.display = 'none';
+    document.querySelector('.quiz-progress-wrapper').style.display = 'none';
+    document.getElementById('quizSuccess').style.display = 'block';
+}
+
+// ========================================================
+// 5. ОТПРАВКА ФОРМ
+// ========================================================
+const consultForm = document.getElementById('consultForm');
+if (consultForm) {
+    consultForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('consultName').value;
+        const phone = document.getElementById('consultPhone').value;
+        const area = document.getElementById('consultArea').value;
 
         fetch('send.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-        subject: "Квиз (Дизайн)",
-        text: message // твоя переменная с текстом квиза
-    })
-})
-.then(res => { if (res.ok) showQuizSuccess(); })
-.catch(() => alert("Ошибка сети."));
-    function showQuizSuccess() {
-        document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
-        document.getElementById('quizNav').style.display = 'none';
-        document.querySelector('.quiz-progress-wrapper').style.display = 'none';
-        document.getElementById('quizSuccess').style.display = 'block';
-    }
-
-    // ========================================================
-    // 5. ОТПРАВКА ФОРМЫ КОНСУЛЬТАЦИИ
-    // ========================================================
-    const consultForm = document.getElementById('consultForm');
-    if (consultForm) {
-        consultForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // ЭТО ОСТАНАВЛИВАЕТ ПЕРЕЗАГРУЗКУ
-
-            const name = document.getElementById('consultName').value;
-            const phone = document.getElementById('consultPhone').value;
-            const area = document.getElementById('consultArea').value;
-
-            const message = `<b>🎨 ЗАЯВКА НА КОНСУЛЬТАЦИЮ</b>\n` +
-                            `<b>Имя:</b> ${name}\n` +
-                            `<b>Телефон:</b> ${phone}\n` +
-                            `<b>Площадь:</b> ${area || 'Не указана'} м²`;
-
-            fetch('send.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-        subject: "Консультация",
-        text: `<b>Имя:</b> ${name}\n<b>Телефон:</b> ${phone}\n<b>Площадь:</b> ${area} м²`
-    })
-})
-.then(res => {
-    if (res.ok) { openSuccessModal(); consultForm.reset(); }
-});
-
-    // ========================================================
-    // 6. ОБЩИЙ ОБРАБОТЧИК КЛИКОВ (ЗАКРЫТИЕ ПО ФОНУ)
-    // ========================================================
-    window.addEventListener('click', (e) => {
-        if (e.target === phoneModal) closePhoneModal();
-        if (e.target === successModal) closeSuccessModal();
-        if (e.target === zamerModal) closeZamerModal(); // Если есть функция
-        
-        const menu = document.getElementById('fabMenu');
-        if (menu && !menu.contains(e.target)) menu.classList.remove('active');
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                subject: "Консультация",
+                text: `<b>🎨 КОНСУЛЬТАЦИЯ</b>\n<b>Имя:</b> ${name}\n<b>Телефон:</b> ${phone}\n<b>Площадь:</b> ${area} м²`
+            })
+        }).then(res => { if (res.ok) { openSuccessModal(); consultForm.reset(); } });
     });
+}
 
-    function toggleFabMenu(e) {
-        e.stopPropagation();
-        document.getElementById('fabMenu').classList.toggle('active');
-    }
-    // ========================================================
-    // 7. ЛОГИКА АККОРДЕОНА FAQ
-    // ========================================================
-    function toggleFaq(element) {
-        const item = element.parentElement;
-        
-        // Закрываем все остальные открытые вопросы (опционально)
-        const allItems = document.querySelectorAll('.faq-item');
-        allItems.forEach(faq => {
-            if (faq !== item) {
-                faq.classList.remove('active');
-            }
-        });
+const wantSameForm = document.getElementById('wantSameForm');
+if (wantSameForm) {
+    wantSameForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('wantName').value;
+        const phone = document.getElementById('wantPhone').value;
 
-        // Открываем/закрываем текущий
-        item.classList.toggle('active');
-    }
- 
+        fetch('send.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                subject: "Хотите также",
+                text: `<b>🔥 ХОТИТЕ ТАКЖЕ</b>\n<b>Имя:</b> ${name}\n<b>Телефон:</b> ${phone}`
+            })
+        }).then(res => { if (res.ok) { openSuccessModal(); wantSameForm.reset(); } });
+    });
+}
+
+// ========================================================
+// 6. ТАБЫ И FAQ
+// ========================================================
+function toggleFaq(element) {
+    const item = element.parentElement;
+    document.querySelectorAll('.faq-item').forEach(faq => { if (faq !== item) faq.classList.remove('active'); });
+    item.classList.toggle('active');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Табы
     const tabBtns = document.querySelectorAll('.control-tab-btn');
     const panes = document.querySelectorAll('.control-pane');
-
-    if (tabBtns.length > 0) {
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-tab');
-                const targetPane = document.getElementById(targetId);
-
-                if (targetPane) {
-                    // 1. Убираем активный класс у всех кнопок
-                    tabBtns.forEach(b => b.classList.remove('active'));
-                    // 2. Убираем активный класс у всех вкладок
-                    panes.forEach(p => p.classList.remove('active'));
-
-                    // 3. Добавляем активный класс нажатой кнопке
-                    this.classList.add('active');
-                    // 4. Показываем нужную вкладку
-                    targetPane.classList.add('active');
-                    
-                    console.log('Tab switched to:', targetId); // Для теста в консоли
-                }
-            });
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-tab');
+            tabBtns.forEach(b => b.classList.remove('active'));
+            panes.forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+            document.getElementById(targetId).classList.add('active');
         });
-    }
-});
-    // ========================================================
-    // 5.1 ОТПРАВКА ФОРМЫ "ХОТИТЕ ТАКЖЕ?"
-    // ========================================================
-    const wantSameForm = document.getElementById('wantSameForm');
-    if (wantSameForm) {
-        wantSameForm.addEventListener('submit', function(e) {
-            e.preventDefault(); 
+    });
 
-            const name = document.getElementById('wantName').value;
-            const phone = document.getElementById('wantPhone').value;
-
-            const message = `<b>🔥 ХОТИТЕ ТАКЖЕ? (ДИЗАЙН)</b>\n` +
-                            `<b>Имя:</b> ${name}\n` +
-                            `<b>Телефон:</b> ${phone}`;
-
-            fetch('send.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-        subject: "Хотите также",
-        text: `<b>Имя:</b> ${name}\n<b>Телефон:</b> ${phone}`
-    })
-})
-.then(res => {
-    if (res.ok) { openSuccessModal(); wantSameForm.reset(); }
-});
-    // ЛОГИКА КУКИ
-document.addEventListener("DOMContentLoaded", function() {
-    // Проверяем, принимал ли пользователь куки ранее
+    // Куки
     if (!localStorage.getItem("cookiesAccepted")) {
-        // Показываем с задержкой в 2 секунды для красоты
-        setTimeout(() => {
-            document.getElementById("cookieBanner").classList.add("show");
-        }, 2000);
+        setTimeout(() => { document.getElementById("cookieBanner").classList.add("show"); }, 2000);
     }
 });
 
 function acceptCookies() {
-    // Скрываем баннер
     document.getElementById("cookieBanner").classList.remove("show");
-    // Запоминаем выбор
     localStorage.setItem("cookiesAccepted", "true");
 }
 </script>

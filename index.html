@@ -2855,22 +2855,16 @@ section.trust-line-premium {
 <b>Телефон:</b> ${phone}
         `;
 
-        fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                chat_id: TG_CHAT_ID,
-                text: message,
-                parse_mode: 'html'
-            })
-        })
-        .then(res => { 
-            if (res.ok) showQuizSuccess(); 
-            else alert("Ошибка отправки боту.");
-        })
-        .catch(() => alert("Ошибка сети."));
-    }
-
+        fetch('send.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        subject: "Квиз (Дизайн)",
+        text: message // твоя переменная с текстом квиза
+    })
+})
+.then(res => { if (res.ok) showQuizSuccess(); })
+.catch(() => alert("Ошибка сети."));
     function showQuizSuccess() {
         document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
         document.getElementById('quizNav').style.display = 'none';
@@ -2895,22 +2889,17 @@ section.trust-line-premium {
                             `<b>Телефон:</b> ${phone}\n` +
                             `<b>Площадь:</b> ${area || 'Не указана'} м²`;
 
-            fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: TG_CHAT_ID, text: message, parse_mode: 'html' })
-            })
-            .then(res => {
-                if (res.ok) {
-                    openSuccessModal(); 
-                    consultForm.reset();
-                } else {
-                    alert("Ошибка бота. Проверьте Token/ID.");
-                }
-            })
-            .catch(() => alert("Ошибка сети."));
-        });
-    }
+            fetch('send.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        subject: "Консультация",
+        text: `<b>Имя:</b> ${name}\n<b>Телефон:</b> ${phone}\n<b>Площадь:</b> ${area} м²`
+    })
+})
+.then(res => {
+    if (res.ok) { openSuccessModal(); consultForm.reset(); }
+});
 
     // ========================================================
     // 6. ОБЩИЙ ОБРАБОТЧИК КЛИКОВ (ЗАКРЫТИЕ ПО ФОНУ)
@@ -2988,22 +2977,17 @@ document.addEventListener('DOMContentLoaded', function() {
                             `<b>Имя:</b> ${name}\n` +
                             `<b>Телефон:</b> ${phone}`;
 
-            fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: TG_CHAT_ID, text: message, parse_mode: 'html' })
-            })
-            .then(res => {
-                if (res.ok) {
-                    openSuccessModal(); 
-                    wantSameForm.reset();
-                } else {
-                    alert("Ошибка бота. Проверьте Token/ID.");
-                }
-            })
-            .catch(() => alert("Ошибка сети."));
-        });
-    }
+            fetch('send.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        subject: "Хотите также",
+        text: `<b>Имя:</b> ${name}\n<b>Телефон:</b> ${phone}`
+    })
+})
+.then(res => {
+    if (res.ok) { openSuccessModal(); wantSameForm.reset(); }
+});
     // ЛОГИКА КУКИ
 document.addEventListener("DOMContentLoaded", function() {
     // Проверяем, принимал ли пользователь куки ранее
